@@ -5,7 +5,7 @@ import { sendMessageStream } from '../api'
 
 export default function ChatPanel({ onTurnComplete }) {
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: 'Hi! Welcome to Noor Boutique 👋 How can I help you today? Looking for something to wear, or do you have an order question?', intent: 'general', confidence: 1.0 }
+    { role: 'assistant', content: 'Hi! Welcome to Taara Boutique 👋 How can I help you today? Looking for something to wear, or do you have an order question?', intent: 'general', confidence: 1.0 }
   ])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
@@ -108,7 +108,7 @@ export default function ChatPanel({ onTurnComplete }) {
     <div className="flex flex-col h-full">
       {/* Session info bar */}
       <div className="flex items-center gap-3 px-4 py-2 bg-white border-b border-slate-200 text-xs text-slate-500 shrink-0">
-        <span className="font-medium text-slate-700">Noor Boutique</span>
+        <span className="font-medium text-slate-700">Taara Boutique</span>
         <span className="text-slate-300">|</span>
         <span>Stage: <span className="font-mono text-blue-600">{stage}</span></span>
         <span>Turns: <span className="font-mono">{turnCount}</span></span>
@@ -149,7 +149,7 @@ export default function ChatPanel({ onTurnComplete }) {
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Message Noor Boutique..."
+            placeholder="Message Taara Boutique..."
             rows={1}
             className="flex-1 bg-transparent text-sm resize-none outline-none text-slate-800 placeholder-slate-400 max-h-32"
           />

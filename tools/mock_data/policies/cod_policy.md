@@ -1,4 +1,4 @@
-# Noor Boutique – Cash on Delivery (COD) Policy
+# Taara Boutique – Cash on Delivery (COD) Policy
 
 1. COD is available for orders with total value under ₹5000 only.
 2. COD is NOT available for custom-stitched items.

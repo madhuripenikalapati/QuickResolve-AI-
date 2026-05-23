@@ -6,7 +6,7 @@ from api.routes import chat, eval
 
 app = FastAPI(
     title="QuickResolve AI",
-    description="D2C Customer Support Agent for Noor Boutique",
+    description="D2C Customer Support Agent for Taara Boutique",
     version="1.0.0",
 )
 

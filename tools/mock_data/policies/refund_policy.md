@@ -1,4 +1,4 @@
-# Noor Boutique – Refund Policy
+# Taara Boutique – Refund Policy
 
 1. Refunds are accepted within 7 days of delivery date only.
 2. Item must be unused, unworn, and in original condition with all tags attached.
@@ -9,4 +9,4 @@
 7. Shipping charges paid on the original order are non-refundable.
 8. For COD orders, refund will be processed via bank transfer. Customer must provide bank details.
 9. Items damaged during shipping are eligible for full refund including shipping charges – photo proof required.
-10. Noor Boutique reserves the right to reject returns that do not meet the above conditions.
+10. Taara Boutique reserves the right to reject returns that do not meet the above conditions.

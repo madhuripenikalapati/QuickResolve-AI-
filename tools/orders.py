@@ -85,7 +85,7 @@ def create_order(
     payment_link = None
     status = "confirmed"
     if payment_method.upper() != "COD":
-        payment_link = f"https://pay.noorboutique.com/{order_id}?amount={total}"
+        payment_link = f"https://pay.taaraboutique.com/{order_id}?amount={total}"
         status = "pending_payment"
 
     order = {
@@ -163,7 +163,7 @@ def update_order(order_id: str, updates: dict) -> dict:
             order["payment_method"] = new_payment
             order["cod_fee"] = 0
             order["total"] = amount + shipping
-            order["payment_link"] = f"https://pay.noorboutique.com/{order_id.upper()}?amount={order['total']}"
+            order["payment_link"] = f"https://pay.taaraboutique.com/{order_id.upper()}?amount={order['total']}"
             order["status"] = "pending_payment"
 
     for key, value in updates.items():

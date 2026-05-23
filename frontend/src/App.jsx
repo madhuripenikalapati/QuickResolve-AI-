@@ -21,7 +21,7 @@ export default function App() {
           <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">Q</div>
           <span className="font-semibold text-slate-800 text-sm">QuickResolve AI</span>
           <span className="text-slate-300 text-sm">·</span>
-          <span className="text-xs text-slate-400">Noor Boutique</span>
+          <span className="text-xs text-slate-400">Taara Boutique</span>
         </div>
         <div className="ml-auto flex items-center gap-2">
           <span className="text-xs text-slate-400 hidden sm:block">Debug panel</span>

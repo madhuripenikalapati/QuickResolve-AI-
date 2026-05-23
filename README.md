@@ -4,9 +4,9 @@
 
 AI-powered D2C customer support agent with hybrid search, policy RAG, and order management. Built with LangGraph + Groq (Llama 3.1). Includes custom eval framework with 30+ automated test cases across 4 reliability metrics.
 
-## Demo: Noor Boutique
+## Demo: Taara Boutique
 
-QuickResolve AI powers customer support for "Noor Boutique" – a fictional Jaipur-based fashion seller on Instagram. It handles the complete buyer journey:
+QuickResolve AI powers customer support for "Taara Boutique" – a fictional Jaipur-based fashion seller on Instagram. It handles the complete buyer journey:
 
 - **Product Discovery** – hybrid search (structured filters + vector similarity) across 50 products with real product images
 - **Policy Q&A** – RAG over 4 policy documents (refund, exchange, COD, shipping)
