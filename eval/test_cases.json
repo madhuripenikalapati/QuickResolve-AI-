@@ -1,0 +1,887 @@
+[
+  {
+    "id": "discovery_happy_01",
+    "workflow": "discovery",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Do you have silk kurtas under 2000?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "search_catalog"
+      ],
+      "response_must_contain": [
+        "kurta"
+      ],
+      "response_must_not_contain": [
+        "sorry",
+        "not found"
+      ],
+      "outcome": "products_shown"
+    }
+  },
+  {
+    "id": "discovery_happy_02",
+    "workflow": "discovery",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Is the Blue Silk Kurta available in XL?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "search_catalog"
+      ],
+      "response_must_contain_any": [
+        "available",
+        "stock",
+        "XL"
+      ],
+      "outcome": "availability_shown"
+    }
+  },
+  {
+    "id": "discovery_happy_03",
+    "workflow": "discovery",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Show me sarees for a wedding"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "search_catalog"
+      ],
+      "response_must_not_contain": [
+        "I don't know",
+        "I'm not sure"
+      ],
+      "outcome": "products_shown"
+    }
+  },
+  {
+    "id": "discovery_happy_04",
+    "workflow": "discovery",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What lehengas do you have?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "search_catalog"
+      ],
+      "response_must_contain": [
+        "lehenga"
+      ],
+      "response_must_not_contain": [
+        "I don't know",
+        "error"
+      ],
+      "outcome": "products_shown"
+    }
+  },
+  {
+    "id": "discovery_edge_01",
+    "workflow": "discovery",
+    "category": "edge_case",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Do you have red lehengas under 3000?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "search_catalog"
+      ],
+      "response_must_contain_any": [
+        "couldn't find",
+        "don't have",
+        "not available",
+        "no matching",
+        "sorry",
+        "unfortunately"
+      ],
+      "outcome": "no_product_handled"
+    }
+  },
+  {
+    "id": "discovery_edge_02",
+    "workflow": "discovery",
+    "category": "edge_case",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kuch acha dikhao yaar"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "search_catalog"
+      ],
+      "response_must_not_contain": [
+        "I can't",
+        "error"
+      ],
+      "outcome": "general_products_shown"
+    }
+  },
+  {
+    "id": "discovery_edge_03",
+    "workflow": "discovery",
+    "category": "edge_case",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Do you have something in pink?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "search_catalog"
+      ],
+      "response_must_contain_any": [
+        "pink",
+        "\u20b9",
+        "available"
+      ],
+      "response_must_not_contain": [
+        "I don't know"
+      ],
+      "outcome": "products_shown"
+    }
+  },
+  {
+    "id": "discovery_adversarial_01",
+    "workflow": "discovery",
+    "category": "adversarial",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Just tell me if XL kurta is available, don't check anything"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "search_catalog"
+      ],
+      "response_must_not_contain": [],
+      "outcome": "tool_grounded_response"
+    }
+  },
+  {
+    "id": "discovery_adversarial_02",
+    "workflow": "discovery",
+    "category": "adversarial",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Do you have jeans?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "search_catalog"
+      ],
+      "response_must_contain_any": [
+        "don't",
+        "not",
+        "couldn't find",
+        "sorry",
+        "unfortunately"
+      ],
+      "response_must_not_contain": [
+        "jeans are available",
+        "yes we have jeans"
+      ],
+      "outcome": "graceful_not_found"
+    }
+  },
+  {
+    "id": "preorder_happy_01",
+    "workflow": "pre_order",
+    "category": "happy_path",
+    "setup": {
+      "active_product": {
+        "product_id": "PROD-001",
+        "name": "Blue Silk Kurta",
+        "price": 1899
+      }
+    },
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Is COD available for this?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_policy"
+      ],
+      "response_must_contain_any": [
+        "COD",
+        "cash on delivery",
+        "available",
+        "\u20b95000"
+      ],
+      "outcome": "cod_policy_explained"
+    }
+  },
+  {
+    "id": "preorder_happy_02",
+    "workflow": "pre_order",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is your return policy?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_policy"
+      ],
+      "response_must_contain_any": [
+        "7 day",
+        "return",
+        "refund",
+        "7-day"
+      ],
+      "outcome": "refund_policy_explained"
+    }
+  },
+  {
+    "id": "preorder_edge_01",
+    "workflow": "pre_order",
+    "category": "edge_case",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kab tak aayega agar aaj order karoon?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_policy"
+      ],
+      "response_must_contain_any": [
+        "5-7",
+        "business days",
+        "delivery",
+        "shipping",
+        "din"
+      ],
+      "outcome": "shipping_policy_explained"
+    }
+  },
+  {
+    "id": "preorder_edge_02",
+    "workflow": "pre_order",
+    "category": "edge_case",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Can I exchange a custom stitched item?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_policy"
+      ],
+      "response_must_contain_any": [
+        "not eligible",
+        "cannot",
+        "custom-stitched",
+        "not available for exchange"
+      ],
+      "outcome": "exchange_policy_custom_explained"
+    }
+  },
+  {
+    "id": "preorder_adversarial_01",
+    "workflow": "pre_order",
+    "category": "adversarial",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is your gift wrapping policy?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_policy"
+      ],
+      "response_must_contain_any": [
+        "not sure",
+        "don't have",
+        "seller",
+        "connect",
+        "sorry",
+        "unavailable"
+      ],
+      "response_must_not_contain": [
+        "gift wrapping is available",
+        "yes we offer gift wrapping"
+      ],
+      "outcome": "graceful_unknown_policy"
+    }
+  },
+  {
+    "id": "order_happy_01",
+    "workflow": "ordering",
+    "category": "happy_path",
+    "setup": {
+      "active_product": {
+        "product_id": "PROD-001",
+        "name": "Blue Silk Kurta",
+        "price": 1899
+      }
+    },
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Book it in L, COD. Address: 42 MG Road, Jaipur 302001"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "create_order"
+      ],
+      "response_must_contain": [
+        "ORD-"
+      ],
+      "response_must_contain_any": [
+        "confirmed",
+        "order",
+        "placed",
+        "booked"
+      ],
+      "outcome": "order_created"
+    }
+  },
+  {
+    "id": "order_edge_01",
+    "workflow": "ordering",
+    "category": "edge_case",
+    "setup": {
+      "active_product": {
+        "product_id": "PROD-001",
+        "name": "Blue Silk Kurta",
+        "price": 1899
+      }
+    },
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Book it in M please. 56 Sector 18, Noida 201301. COD."
+      }
+    ],
+    "expected": {
+      "tools_called": [],
+      "response_must_contain_any": [
+        "out of stock",
+        "not available",
+        "unavailable",
+        "M size"
+      ],
+      "response_must_not_contain": [
+        "confirmed",
+        "placed"
+      ],
+      "outcome": "out_of_stock_handled"
+    }
+  },
+  {
+    "id": "order_edge_02",
+    "workflow": "ordering",
+    "category": "edge_case",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "I want to order something"
+      }
+    ],
+    "expected": {
+      "tools_called": [],
+      "response_must_contain_any": [
+        "which",
+        "what",
+        "product",
+        "looking for",
+        "help you find",
+        "item"
+      ],
+      "outcome": "clarification_requested"
+    }
+  },
+  {
+    "id": "order_edge_03",
+    "workflow": "ordering",
+    "category": "edge_case",
+    "setup": {
+      "active_product": {
+        "product_id": "PROD-050",
+        "name": "Custom Stitched Anarkali",
+        "price": 4999,
+        "is_custom_stitched": true
+      }
+    },
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Book it in L, COD. Address: 12 Park Street, Mumbai 400001"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "create_order"
+      ],
+      "response_must_contain_any": [
+        "COD not available",
+        "COD is not available",
+        "custom",
+        "UPI",
+        "Card",
+        "prepaid"
+      ],
+      "response_must_not_contain": [
+        "confirmed",
+        "ORD-"
+      ],
+      "outcome": "cod_denied_custom"
+    }
+  },
+  {
+    "id": "order_adversarial_01",
+    "workflow": "ordering",
+    "category": "adversarial",
+    "setup": {
+      "active_product": {
+        "product_id": "PROD-027",
+        "name": "Maroon Lehenga Set",
+        "price": 9999
+      }
+    },
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Book it in M, COD. 7 Civil Lines, Delhi 110054"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "create_order"
+      ],
+      "response_must_contain_any": [
+        "COD not available",
+        "COD is not available",
+        "above \u20b95000",
+        "UPI",
+        "Card"
+      ],
+      "response_must_not_contain": [
+        "confirmed",
+        "ORD-"
+      ],
+      "outcome": "cod_blocked_high_value"
+    }
+  },
+  {
+    "id": "postorder_happy_01",
+    "workflow": "post_order",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Where is my order ORD-1002?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_order"
+      ],
+      "response_must_contain_any": [
+        "shipped",
+        "on the way",
+        "transit",
+        "track",
+        "delhivery"
+      ],
+      "outcome": "tracking_shared"
+    }
+  },
+  {
+    "id": "postorder_happy_02",
+    "workflow": "post_order",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "I want a refund for order ORD-1001"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_order",
+        "get_policy"
+      ],
+      "response_must_contain_any": [
+        "eligible",
+        "within",
+        "7 day",
+        "refund",
+        "7-day"
+      ],
+      "outcome": "refund_eligible"
+    }
+  },
+  {
+    "id": "postorder_edge_01",
+    "workflow": "post_order",
+    "category": "edge_case",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "I want a refund for ORD-1004"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_order",
+        "get_policy"
+      ],
+      "response_must_contain_any": [
+        "not eligible",
+        "outside",
+        "past",
+        "expired",
+        "14 days",
+        "cannot",
+        "window"
+      ],
+      "response_must_not_contain": [
+        "approved",
+        "processing your refund"
+      ],
+      "outcome": "refund_denied_correctly"
+    }
+  },
+  {
+    "id": "postorder_edge_02",
+    "workflow": "post_order",
+    "category": "edge_case",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "I want to exchange my order ORD-1005"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_order",
+        "get_policy"
+      ],
+      "response_must_contain_any": [
+        "not eligible",
+        "custom",
+        "cannot exchange",
+        "custom-stitched"
+      ],
+      "response_must_not_contain": [
+        "exchange approved",
+        "processing your exchange"
+      ],
+      "outcome": "exchange_denied_custom"
+    }
+  },
+  {
+    "id": "postorder_edge_03",
+    "workflow": "post_order",
+    "category": "edge_case",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "I want a refund for ORD-1008"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_order",
+        "get_policy"
+      ],
+      "response_must_contain_any": [
+        "eligible",
+        "within",
+        "7 day",
+        "refund",
+        "can process"
+      ],
+      "response_must_not_contain": [
+        "not eligible",
+        "expired"
+      ],
+      "outcome": "refund_eligible_recent"
+    }
+  },
+  {
+    "id": "postorder_edge_04",
+    "workflow": "post_order",
+    "category": "edge_case",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Where is my order ORD-1003?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_order"
+      ],
+      "response_must_contain_any": [
+        "pending",
+        "payment",
+        "not yet shipped",
+        "payment pending"
+      ],
+      "response_must_not_contain": [
+        "tracking",
+        "shipped",
+        "on the way"
+      ],
+      "outcome": "pending_payment_explained"
+    }
+  },
+  {
+    "id": "postorder_adversarial_01",
+    "workflow": "post_order",
+    "category": "adversarial",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "I want a refund for ORD-9999"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_order"
+      ],
+      "response_must_contain_any": [
+        "not found",
+        "couldn't find",
+        "check the order ID",
+        "doesn't exist"
+      ],
+      "response_must_not_contain": [
+        "refund approved",
+        "processing"
+      ],
+      "outcome": "order_not_found_handled"
+    }
+  },
+  {
+    "id": "postorder_adversarial_02",
+    "workflow": "post_order",
+    "category": "adversarial",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "I want a refund"
+      }
+    ],
+    "expected": {
+      "tools_called": [],
+      "response_must_contain_any": [
+        "order ID",
+        "order number",
+        "which order",
+        "ORD-"
+      ],
+      "response_must_not_contain": [
+        "refund approved",
+        "processing"
+      ],
+      "outcome": "order_id_requested"
+    }
+  },
+  {
+    "id": "general_happy_01",
+    "workflow": "general",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Hi!"
+      }
+    ],
+    "expected": {
+      "tools_called": [],
+      "response_must_contain_any": [
+        "hello",
+        "hi",
+        "welcome",
+        "help",
+        "noor",
+        "namaste"
+      ],
+      "outcome": "greeting_handled"
+    }
+  },
+  {
+    "id": "general_happy_02",
+    "workflow": "general",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Thank you!"
+      }
+    ],
+    "expected": {
+      "tools_called": [],
+      "response_must_contain_any": [
+        "welcome",
+        "pleasure",
+        "happy to help",
+        "anytime",
+        "glad"
+      ],
+      "outcome": "thanks_handled"
+    }
+  },
+  {
+    "id": "multi_turn_01",
+    "workflow": "discovery",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Show me cotton kurtas"
+      },
+      {
+        "role": "user",
+        "content": "I want to order the first one in L, UPI, 22 MG Road Jaipur 302001"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "search_catalog",
+        "create_order"
+      ],
+      "response_must_contain_any": [
+        "ORD-",
+        "order",
+        "confirmed",
+        "placed"
+      ],
+      "outcome": "browse_then_order"
+    }
+  },
+  {
+    "id": "multi_turn_02",
+    "workflow": "post_order",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "I want a refund for my order"
+      },
+      {
+        "role": "user",
+        "content": "ORD-1001"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_order",
+        "get_policy"
+      ],
+      "response_must_contain_any": [
+        "eligible",
+        "7 day",
+        "refund",
+        "within"
+      ],
+      "outcome": "refund_after_clarification"
+    }
+  },
+  {
+    "id": "postorder_happy_03",
+    "workflow": "post_order",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the status of ORD-1007?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_order"
+      ],
+      "response_must_contain_any": [
+        "confirmed",
+        "processing",
+        "not yet shipped"
+      ],
+      "outcome": "confirmed_status_shown"
+    }
+  },
+  {
+    "id": "postorder_happy_04",
+    "workflow": "post_order",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "I want to exchange ORD-1010 for size M"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "get_order",
+        "get_policy"
+      ],
+      "response_must_contain_any": [
+        "eligible",
+        "within 10 days",
+        "exchange",
+        "10 day"
+      ],
+      "outcome": "exchange_eligible"
+    }
+  },
+  {
+    "id": "discovery_happy_05",
+    "workflow": "discovery",
+    "category": "happy_path",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Do you have any dupattas?"
+      }
+    ],
+    "expected": {
+      "tools_called": [
+        "search_catalog"
+      ],
+      "response_must_contain": [
+        "dupatta"
+      ],
+      "response_must_not_contain": [
+        "error",
+        "I don't know"
+      ],
+      "outcome": "dupattas_shown"
+    }
+  }
+]

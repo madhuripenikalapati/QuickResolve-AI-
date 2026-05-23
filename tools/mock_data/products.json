@@ -1,0 +1,1329 @@
+{
+  "PROD-001": {
+    "name": "Blue Silk Kurta",
+    "category": "kurta",
+    "subcategory": "silk_kurta",
+    "price": 1899,
+    "sizes": {
+      "S": 3,
+      "M": 0,
+      "L": 5,
+      "XL": 2
+    },
+    "colors": [
+      "Blue",
+      "Navy"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "festive",
+      "wedding",
+      "party"
+    ],
+    "description": "Handwoven blue silk kurta with intricate gold thread detailing on the neckline and cuffs. Perfect for festive occasions and celebrations.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-001.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?blue+kurta+india+fashion&sig=0"
+  },
+  "PROD-002": {
+    "name": "Ivory Cotton Everyday Kurta",
+    "category": "kurta",
+    "subcategory": "cotton_kurta",
+    "price": 849,
+    "sizes": {
+      "S": 5,
+      "M": 8,
+      "L": 6,
+      "XL": 3
+    },
+    "colors": [
+      "Ivory",
+      "White"
+    ],
+    "fabric": "Cotton",
+    "occasion": [
+      "casual",
+      "daily_wear",
+      "office"
+    ],
+    "description": "Soft breathable ivory cotton kurta with subtle block print borders, ideal for everyday wear and casual outings.",
+    "care": "Machine wash cold",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-002.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?ivory+white+kurta+india+fashion&sig=1"
+  },
+  "PROD-003": {
+    "name": "Rose Pink Chanderi Kurta",
+    "category": "kurta",
+    "subcategory": "chanderi_kurta",
+    "price": 2299,
+    "sizes": {
+      "S": 2,
+      "M": 4,
+      "L": 0,
+      "XL": 1
+    },
+    "colors": [
+      "Rose Pink",
+      "Pink"
+    ],
+    "fabric": "Chanderi",
+    "occasion": [
+      "festive",
+      "party",
+      "wedding"
+    ],
+    "description": "Elegant rose pink chanderi kurta with delicate zari border and floral motifs. Lightweight and breathable for long celebrations.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-003.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?pink+kurta+india+fashion&sig=2"
+  },
+  "PROD-004": {
+    "name": "Mint Green Georgette Kurta",
+    "category": "kurta",
+    "subcategory": "georgette_kurta",
+    "price": 1599,
+    "sizes": {
+      "S": 0,
+      "M": 3,
+      "L": 4,
+      "XL": 2
+    },
+    "colors": [
+      "Mint Green",
+      "Green"
+    ],
+    "fabric": "Georgette",
+    "occasion": [
+      "party",
+      "casual",
+      "festive"
+    ],
+    "description": "Flowy mint green georgette kurta with subtle shimmer and a relaxed silhouette, perfect for parties and casual gatherings.",
+    "care": "Hand wash gently",
+    "is_custom_stitched": false,
+    "is_on_sale": true,
+    "image_url": "/products/PROD-004.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?mint+green+kurta+india+fashion&sig=3"
+  },
+  "PROD-005": {
+    "name": "Cotton Daily Wear Kurta",
+    "category": "kurta",
+    "subcategory": "cotton_kurta",
+    "price": 999,
+    "sizes": {
+      "S": 6,
+      "M": 7,
+      "L": 5,
+      "XL": 4
+    },
+    "colors": [
+      "Yellow",
+      "Mustard"
+    ],
+    "fabric": "Cotton",
+    "occasion": [
+      "daily_wear",
+      "casual",
+      "office"
+    ],
+    "description": "Comfortable mustard yellow cotton kurta with minimal embroidery at the collar, a wardrobe staple for daily wear.",
+    "care": "Machine wash cold",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-005.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?yellow+kurta+india+fashion&sig=4"
+  },
+  "PROD-006": {
+    "name": "Maroon Silk Festive Kurta",
+    "category": "kurta",
+    "subcategory": "silk_kurta",
+    "price": 2799,
+    "sizes": {
+      "S": 1,
+      "M": 2,
+      "L": 3,
+      "XL": 0
+    },
+    "colors": [
+      "Maroon",
+      "Deep Red"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "festive",
+      "wedding",
+      "party"
+    ],
+    "description": "Rich maroon silk kurta with heavy zari embroidery along the hem and sleeves. A stunning choice for wedding festivities.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-006.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?maroon+red+kurta+india+fashion&sig=5"
+  },
+  "PROD-007": {
+    "name": "Navy Blue Cotton Kurta",
+    "category": "kurta",
+    "subcategory": "cotton_kurta",
+    "price": 799,
+    "sizes": {
+      "S": 4,
+      "M": 6,
+      "L": 5,
+      "XL": 3
+    },
+    "colors": [
+      "Navy Blue",
+      "Navy"
+    ],
+    "fabric": "Cotton",
+    "occasion": [
+      "office",
+      "casual",
+      "daily_wear"
+    ],
+    "description": "Crisp navy blue cotton kurta with a classic straight cut, perfect for office wear paired with palazzos or trousers.",
+    "care": "Machine wash cold",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-007.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?navy+blue+kurta+india+fashion&sig=6"
+  },
+  "PROD-008": {
+    "name": "Red Anarkali Set",
+    "category": "anarkali",
+    "subcategory": "anarkali_set",
+    "price": 3299,
+    "sizes": {
+      "S": 2,
+      "M": 1,
+      "L": 3,
+      "XL": 2
+    },
+    "colors": [
+      "Red",
+      "Crimson"
+    ],
+    "fabric": "Georgette",
+    "occasion": [
+      "festive",
+      "wedding",
+      "party"
+    ],
+    "description": "Vibrant red georgette anarkali set with intricate embroidery and a matching dupatta, ideal for festive occasions.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-008.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?red+anarkali+salwar+india&sig=7"
+  },
+  "PROD-009": {
+    "name": "Teal Chanderi Anarkali",
+    "category": "anarkali",
+    "subcategory": "anarkali_set",
+    "price": 4299,
+    "sizes": {
+      "S": 1,
+      "M": 2,
+      "L": 0,
+      "XL": 1
+    },
+    "colors": [
+      "Teal",
+      "Teal Green"
+    ],
+    "fabric": "Chanderi",
+    "occasion": [
+      "festive",
+      "wedding",
+      "party"
+    ],
+    "description": "Graceful teal chanderi anarkali with silver sequin work and a flowing floor-length silhouette for weddings and receptions.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-009.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?teal+anarkali+salwar+india&sig=8"
+  },
+  "PROD-010": {
+    "name": "Peach Silk Anarkali Set",
+    "category": "anarkali",
+    "subcategory": "anarkali_set",
+    "price": 3899,
+    "sizes": {
+      "S": 3,
+      "M": 2,
+      "L": 1,
+      "XL": 0
+    },
+    "colors": [
+      "Peach",
+      "Salmon"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "festive",
+      "party",
+      "wedding"
+    ],
+    "description": "Soft peach silk anarkali with delicate floral embroidery and a layered skirt, perfect for sangeet and festive celebrations.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": true,
+    "image_url": "/products/PROD-010.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?peach+anarkali+salwar+india&sig=9"
+  },
+  "PROD-011": {
+    "name": "Purple Georgette Anarkali",
+    "category": "anarkali",
+    "subcategory": "anarkali_set",
+    "price": 2499,
+    "sizes": {
+      "S": 4,
+      "M": 3,
+      "L": 2,
+      "XL": 1
+    },
+    "colors": [
+      "Purple",
+      "Violet"
+    ],
+    "fabric": "Georgette",
+    "occasion": [
+      "party",
+      "festive",
+      "casual"
+    ],
+    "description": "Elegant purple georgette anarkali with mirror work accents and a relaxed flared cut suitable for parties and festive events.",
+    "care": "Hand wash gently",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-011.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?purple+anarkali+salwar+india&sig=10"
+  },
+  "PROD-012": {
+    "name": "Georgette Party Kurta",
+    "category": "kurta",
+    "subcategory": "georgette_kurta",
+    "price": 2499,
+    "sizes": {
+      "S": 2,
+      "M": 3,
+      "L": 1,
+      "XL": 4
+    },
+    "colors": [
+      "Gold",
+      "Golden Yellow"
+    ],
+    "fabric": "Georgette",
+    "occasion": [
+      "party",
+      "festive",
+      "wedding"
+    ],
+    "description": "Shimmering gold georgette party kurta with sequin embellishments and a flattering A-line silhouette for evening events.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-012.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?gold+yellow+kurta+india+fashion&sig=11"
+  },
+  "PROD-013": {
+    "name": "Black Chanderi Kurta",
+    "category": "kurta",
+    "subcategory": "chanderi_kurta",
+    "price": 1999,
+    "sizes": {
+      "S": 3,
+      "M": 4,
+      "L": 2,
+      "XL": 0
+    },
+    "colors": [
+      "Black"
+    ],
+    "fabric": "Chanderi",
+    "occasion": [
+      "casual",
+      "office",
+      "party"
+    ],
+    "description": "Sophisticated black chanderi kurta with subtle silver threadwork at the neckline, versatile enough for office and evenings out.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-013.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?black+kurta+india+fashion&sig=12"
+  },
+  "PROD-014": {
+    "name": "Orange Cotton Block Print Kurta",
+    "category": "kurta",
+    "subcategory": "cotton_kurta",
+    "price": 1199,
+    "sizes": {
+      "S": 5,
+      "M": 5,
+      "L": 4,
+      "XL": 2
+    },
+    "colors": [
+      "Orange",
+      "Rust"
+    ],
+    "fabric": "Cotton",
+    "occasion": [
+      "casual",
+      "daily_wear",
+      "festive"
+    ],
+    "description": "Vibrant orange cotton kurta with traditional Rajasthani block print in rust tones, a statement piece for casual and festive wear.",
+    "care": "Machine wash cold",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-014.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?orange+kurta+india+fashion&sig=13"
+  },
+  "PROD-015": {
+    "name": "Pink Chanderi Dupatta",
+    "category": "dupatta",
+    "subcategory": "chanderi_dupatta",
+    "price": 899,
+    "sizes": {
+      "Free Size": 12
+    },
+    "colors": [
+      "Pink",
+      "Rose"
+    ],
+    "fabric": "Chanderi",
+    "occasion": [
+      "festive",
+      "wedding",
+      "casual"
+    ],
+    "description": "Delicate pink chanderi dupatta with gold zari border and subtle floral weave, pairs beautifully with any ethnic ensemble.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-015.webp",
+    "image_fallback": "https://source.unsplash.com/300x400/?pink+dupatta+stole+india&sig=14"
+  },
+  "PROD-016": {
+    "name": "Ivory Silk Dupatta",
+    "category": "dupatta",
+    "subcategory": "silk_dupatta",
+    "price": 1299,
+    "sizes": {
+      "Free Size": 8
+    },
+    "colors": [
+      "Ivory",
+      "Cream"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "wedding",
+      "festive"
+    ],
+    "description": "Luxurious ivory silk dupatta with heavy embroidered border, a classic addition to bridal and festive outfits.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-016.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?ivory+white+dupatta+stole+india&sig=15"
+  },
+  "PROD-017": {
+    "name": "Navy Georgette Dupatta",
+    "category": "dupatta",
+    "subcategory": "georgette_dupatta",
+    "price": 699,
+    "sizes": {
+      "Free Size": 15
+    },
+    "colors": [
+      "Navy Blue",
+      "Navy"
+    ],
+    "fabric": "Georgette",
+    "occasion": [
+      "casual",
+      "festive",
+      "office"
+    ],
+    "description": "Lightweight navy georgette dupatta with printed floral motifs, versatile enough to complement casual and office kurtas.",
+    "care": "Hand wash gently",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-017.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?navy+blue+dupatta+stole+india&sig=16"
+  },
+  "PROD-018": {
+    "name": "Black Chiffon Saree",
+    "category": "saree",
+    "subcategory": "chiffon_saree",
+    "price": 3499,
+    "sizes": {
+      "Free Size": 5
+    },
+    "colors": [
+      "Black"
+    ],
+    "fabric": "Chiffon",
+    "occasion": [
+      "party",
+      "wedding",
+      "festive"
+    ],
+    "description": "Elegant black chiffon saree with silver sequin border and embroidered pallu, a timeless choice for evening events and receptions.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-018.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?black+saree+india+silk&sig=17"
+  },
+  "PROD-019": {
+    "name": "Cotton Handloom Saree",
+    "category": "saree",
+    "subcategory": "cotton_saree",
+    "price": 1299,
+    "sizes": {
+      "Free Size": 10
+    },
+    "colors": [
+      "Beige",
+      "Off-White"
+    ],
+    "fabric": "Cotton",
+    "occasion": [
+      "daily_wear",
+      "casual",
+      "office"
+    ],
+    "description": "Handloom beige cotton saree with traditional check weave and a contrasting border, perfect for everyday elegance.",
+    "care": "Machine wash cold",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-019.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?beige+saree+india+silk&sig=18"
+  },
+  "PROD-020": {
+    "name": "Red Silk Saree",
+    "category": "saree",
+    "subcategory": "silk_saree",
+    "price": 5999,
+    "sizes": {
+      "Free Size": 3
+    },
+    "colors": [
+      "Red",
+      "Crimson"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "wedding",
+      "festive"
+    ],
+    "description": "Resplendent red silk saree with gold zari work throughout the body and a heavily embroidered pallu, ideal for brides and grand ceremonies.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-020.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?red+saree+india+silk&sig=19"
+  },
+  "PROD-021": {
+    "name": "Blue Chiffon Printed Saree",
+    "category": "saree",
+    "subcategory": "chiffon_saree",
+    "price": 1999,
+    "sizes": {
+      "Free Size": 7
+    },
+    "colors": [
+      "Blue",
+      "Sky Blue"
+    ],
+    "fabric": "Chiffon",
+    "occasion": [
+      "party",
+      "casual",
+      "festive"
+    ],
+    "description": "Breezy sky blue chiffon saree with abstract floral print and a sequined border, great for parties and casual celebrations.",
+    "care": "Hand wash gently",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-021.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?blue+saree+india+silk&sig=20"
+  },
+  "PROD-022": {
+    "name": "Banarasi Silk Saree",
+    "category": "saree",
+    "subcategory": "banarasi_saree",
+    "price": 6999,
+    "sizes": {
+      "Free Size": 4
+    },
+    "colors": [
+      "Gold",
+      "Maroon"
+    ],
+    "fabric": "Banarasi Silk",
+    "occasion": [
+      "wedding",
+      "festive"
+    ],
+    "description": "Authentic Banarasi silk saree with intricate brocade weave and a richly embellished pallu, a heirloom piece for weddings.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-022.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?gold+yellow+saree+india+silk&sig=21"
+  },
+  "PROD-023": {
+    "name": "Green Cotton Saree",
+    "category": "saree",
+    "subcategory": "cotton_saree",
+    "price": 1499,
+    "sizes": {
+      "Free Size": 6
+    },
+    "colors": [
+      "Green",
+      "Sage"
+    ],
+    "fabric": "Cotton",
+    "occasion": [
+      "casual",
+      "daily_wear",
+      "office"
+    ],
+    "description": "Fresh sage green cotton saree with woven stripes and a minimalist border, comfortable and elegant for daily office wear.",
+    "care": "Machine wash cold",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-023.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?green+saree+india+silk&sig=22"
+  },
+  "PROD-024": {
+    "name": "Purple Chiffon Party Saree",
+    "category": "saree",
+    "subcategory": "chiffon_saree",
+    "price": 2799,
+    "sizes": {
+      "Free Size": 5
+    },
+    "colors": [
+      "Purple",
+      "Violet"
+    ],
+    "fabric": "Chiffon",
+    "occasion": [
+      "party",
+      "festive",
+      "wedding"
+    ],
+    "description": "Glamorous purple chiffon saree with embroidered sequin blouse piece and shimmering pallu, perfect for festive nights out.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-024.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?purple+saree+india+silk&sig=23"
+  },
+  "PROD-025": {
+    "name": "Yellow Silk Saree",
+    "category": "saree",
+    "subcategory": "silk_saree",
+    "price": 4999,
+    "sizes": {
+      "Free Size": 3
+    },
+    "colors": [
+      "Yellow",
+      "Turmeric"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "wedding",
+      "festive"
+    ],
+    "description": "Bright turmeric yellow silk saree with traditional temple border and woven motifs, auspicious and radiant for wedding ceremonies.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-025.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?yellow+saree+india+silk&sig=24"
+  },
+  "PROD-026": {
+    "name": "Pink Georgette Saree",
+    "category": "saree",
+    "subcategory": "georgette_saree",
+    "price": 2499,
+    "sizes": {
+      "Free Size": 6
+    },
+    "colors": [
+      "Pink",
+      "Blush"
+    ],
+    "fabric": "Georgette",
+    "occasion": [
+      "party",
+      "festive",
+      "casual"
+    ],
+    "description": "Soft blush pink georgette saree with stone work embellishments and a flowing drape, ideal for engagement ceremonies and parties.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-026.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?pink+saree+india+silk&sig=25"
+  },
+  "PROD-027": {
+    "name": "Maroon Lehenga Set",
+    "category": "lehenga",
+    "subcategory": "bridal_lehenga",
+    "price": 9999,
+    "sizes": {
+      "S": 2,
+      "M": 1,
+      "L": 2,
+      "XL": 0
+    },
+    "colors": [
+      "Maroon",
+      "Deep Red"
+    ],
+    "fabric": "Velvet",
+    "occasion": [
+      "wedding",
+      "festive"
+    ],
+    "description": "Opulent maroon velvet lehenga with dense zardozi embroidery on the skirt and blouse, a bridal masterpiece for the big day.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-027.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?maroon+red+lehenga+bridal+india&sig=26"
+  },
+  "PROD-028": {
+    "name": "Gold Silk Lehenga",
+    "category": "lehenga",
+    "subcategory": "festive_lehenga",
+    "price": 7499,
+    "sizes": {
+      "S": 1,
+      "M": 2,
+      "L": 1,
+      "XL": 0
+    },
+    "colors": [
+      "Gold",
+      "Golden"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "wedding",
+      "festive",
+      "party"
+    ],
+    "description": "Resplendent gold silk lehenga with gota patti borders and mirror work detailing, a showstopper for sangeet and mehndi events.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-028.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?gold+yellow+lehenga+bridal+india&sig=27"
+  },
+  "PROD-029": {
+    "name": "Pink Net Lehenga",
+    "category": "lehenga",
+    "subcategory": "festive_lehenga",
+    "price": 5999,
+    "sizes": {
+      "S": 2,
+      "M": 1,
+      "L": 0,
+      "XL": 1
+    },
+    "colors": [
+      "Pink",
+      "Baby Pink"
+    ],
+    "fabric": "Net",
+    "occasion": [
+      "wedding",
+      "festive",
+      "party"
+    ],
+    "description": "Dreamy baby pink net lehenga with embroidered floral panels and a heavily worked dupatta, perfect for bridesmaids and receptions.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-029.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?pink+lehenga+bridal+india&sig=28"
+  },
+  "PROD-030": {
+    "name": "Custom Stitched Lehenga",
+    "category": "lehenga",
+    "subcategory": "custom_lehenga",
+    "price": 8999,
+    "sizes": {
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0
+    },
+    "colors": [
+      "Red",
+      "Maroon",
+      "Pink",
+      "Blue"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "wedding",
+      "festive"
+    ],
+    "description": "Bespoke custom-stitched lehenga tailored to your exact measurements with your choice of color and embroidery style.",
+    "care": "Dry clean only",
+    "is_custom_stitched": true,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-030.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?red+lehenga+bridal+india&sig=29"
+  },
+  "PROD-031": {
+    "name": "Blue Banarasi Lehenga",
+    "category": "lehenga",
+    "subcategory": "bridal_lehenga",
+    "price": 12999,
+    "sizes": {
+      "S": 1,
+      "M": 1,
+      "L": 0,
+      "XL": 0
+    },
+    "colors": [
+      "Royal Blue",
+      "Blue"
+    ],
+    "fabric": "Banarasi Silk",
+    "occasion": [
+      "wedding",
+      "festive"
+    ],
+    "description": "Royal blue Banarasi silk lehenga with intricate brocade work and a matching embroidered choli, fit for a royal bride.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-031.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?blue+lehenga+bridal+india&sig=30"
+  },
+  "PROD-032": {
+    "name": "Teal Palazzo Kurta Set",
+    "category": "palazzo_set",
+    "subcategory": "cotton_palazzo",
+    "price": 1799,
+    "sizes": {
+      "S": 4,
+      "M": 5,
+      "L": 3,
+      "XL": 2
+    },
+    "colors": [
+      "Teal",
+      "Teal Blue"
+    ],
+    "fabric": "Cotton",
+    "occasion": [
+      "casual",
+      "office",
+      "daily_wear"
+    ],
+    "description": "Breezy teal cotton palazzo set with a printed kurta and matching wide-leg palazzos, comfortable and stylish for office and outings.",
+    "care": "Machine wash cold",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-032.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?teal+palazzo+kurta+india&sig=31"
+  },
+  "PROD-033": {
+    "name": "Printed Rayon Palazzo Set",
+    "category": "palazzo_set",
+    "subcategory": "rayon_palazzo",
+    "price": 1499,
+    "sizes": {
+      "S": 6,
+      "M": 7,
+      "L": 5,
+      "XL": 3
+    },
+    "colors": [
+      "Multicolor",
+      "Pink",
+      "Yellow"
+    ],
+    "fabric": "Rayon",
+    "occasion": [
+      "casual",
+      "daily_wear"
+    ],
+    "description": "Vibrant multicolor printed rayon palazzo set with floral patterns, a cheerful and comfortable choice for casual summer days.",
+    "care": "Machine wash cold",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-033.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?pink+palazzo+kurta+india&sig=32"
+  },
+  "PROD-034": {
+    "name": "Black Crepe Palazzo Set",
+    "category": "palazzo_set",
+    "subcategory": "crepe_palazzo",
+    "price": 2199,
+    "sizes": {
+      "S": 3,
+      "M": 4,
+      "L": 3,
+      "XL": 1
+    },
+    "colors": [
+      "Black"
+    ],
+    "fabric": "Crepe",
+    "occasion": [
+      "office",
+      "party",
+      "casual"
+    ],
+    "description": "Sleek black crepe palazzo set with a minimal embroidered neckline, effortlessly elegant for office and evening gatherings.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-034.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?black+palazzo+kurta+india&sig=33"
+  },
+  "PROD-035": {
+    "name": "Palazzo Kurta Set",
+    "category": "palazzo_set",
+    "subcategory": "georgette_palazzo",
+    "price": 2799,
+    "sizes": {
+      "S": 2,
+      "M": 3,
+      "L": 4,
+      "XL": 2
+    },
+    "colors": [
+      "Lavender",
+      "Purple"
+    ],
+    "fabric": "Georgette",
+    "occasion": [
+      "festive",
+      "party",
+      "casual"
+    ],
+    "description": "Flowing lavender georgette palazzo set with embroidered dupatta, a graceful combination for festive occasions and parties.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-035.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?lavender+palazzo+kurta+india&sig=34"
+  },
+  "PROD-036": {
+    "name": "Mustard Cotton Dupatta",
+    "category": "dupatta",
+    "subcategory": "cotton_dupatta",
+    "price": 499,
+    "sizes": {
+      "Free Size": 20
+    },
+    "colors": [
+      "Mustard",
+      "Yellow"
+    ],
+    "fabric": "Cotton",
+    "occasion": [
+      "casual",
+      "daily_wear"
+    ],
+    "description": "Cheerful mustard cotton dupatta with hand block print in earthy tones, adds a rustic charm to daily ethnic wear.",
+    "care": "Machine wash cold",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-036.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?mustard+dupatta+stole+india&sig=35"
+  },
+  "PROD-037": {
+    "name": "Red Silk Dupatta",
+    "category": "dupatta",
+    "subcategory": "silk_dupatta",
+    "price": 1499,
+    "sizes": {
+      "Free Size": 9
+    },
+    "colors": [
+      "Red",
+      "Crimson"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "wedding",
+      "festive"
+    ],
+    "description": "Vibrant red silk dupatta with golden zari border and embellished tassels, the perfect finishing touch for bridal and festive looks.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-037.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?red+dupatta+stole+india&sig=36"
+  },
+  "PROD-038": {
+    "name": "Teal Bandhani Dupatta",
+    "category": "dupatta",
+    "subcategory": "bandhani_dupatta",
+    "price": 799,
+    "sizes": {
+      "Free Size": 11
+    },
+    "colors": [
+      "Teal",
+      "Green"
+    ],
+    "fabric": "Georgette",
+    "occasion": [
+      "festive",
+      "casual",
+      "wedding"
+    ],
+    "description": "Handcrafted teal bandhani dupatta with traditional tie-dye pattern in golden dots, a beautiful piece of Rajasthani craft.",
+    "care": "Hand wash gently",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-038.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?teal+dupatta+stole+india&sig=37"
+  },
+  "PROD-039": {
+    "name": "Beige Kashmiri Shawl",
+    "category": "stole",
+    "subcategory": "kashmiri_shawl",
+    "price": 1799,
+    "sizes": {
+      "Free Size": 6
+    },
+    "colors": [
+      "Beige",
+      "Cream"
+    ],
+    "fabric": "Wool",
+    "occasion": [
+      "casual",
+      "festive",
+      "wedding"
+    ],
+    "description": "Warm beige Kashmiri shawl with exquisite hand-embroidered floral motifs, luxuriously soft and perfect for cool evenings.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-039.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?beige+shawl+pashmina+india&sig=38"
+  },
+  "PROD-040": {
+    "name": "Pashmina Shawl",
+    "category": "stole",
+    "subcategory": "pashmina_shawl",
+    "price": 1999,
+    "sizes": {
+      "Free Size": 5
+    },
+    "colors": [
+      "Ivory",
+      "White"
+    ],
+    "fabric": "Pashmina",
+    "occasion": [
+      "festive",
+      "wedding",
+      "casual"
+    ],
+    "description": "Exceptionally soft ivory pashmina shawl with delicate chain stitch embroidery along the borders, a timeless luxury accessory.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-040.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?ivory+white+shawl+pashmina+india&sig=39"
+  },
+  "PROD-041": {
+    "name": "Silk Printed Stole",
+    "category": "stole",
+    "subcategory": "silk_stole",
+    "price": 799,
+    "sizes": {
+      "Free Size": 14
+    },
+    "colors": [
+      "Multicolor",
+      "Blue",
+      "Pink"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "casual",
+      "office",
+      "festive"
+    ],
+    "description": "Lightweight silk stole with a vibrant digital floral print, adds a pop of color to any outfit from office to evening events.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-041.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?blue+shawl+pashmina+india&sig=40"
+  },
+  "PROD-042": {
+    "name": "Floral Embroidered Blouse Piece",
+    "category": "blouse",
+    "subcategory": "embroidered_blouse",
+    "price": 799,
+    "sizes": {
+      "S": 3,
+      "M": 4,
+      "L": 3,
+      "XL": 2
+    },
+    "colors": [
+      "Red",
+      "Maroon"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "wedding",
+      "festive"
+    ],
+    "description": "Pre-stitched red silk blouse with dense floral embroidery and a deep back neck, the perfect complement to silk and Banarasi sarees.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-042.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?red+blouse+fabric+india&sig=41"
+  },
+  "PROD-043": {
+    "name": "Custom Embroidered Blouse",
+    "category": "blouse",
+    "subcategory": "custom_blouse",
+    "price": 899,
+    "sizes": {
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0
+    },
+    "colors": [
+      "All Colors Available"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "wedding",
+      "festive"
+    ],
+    "description": "Custom-stitched embroidered blouse in your choice of color and embroidery, tailored to your measurements for a perfect fit.",
+    "care": "Dry clean only",
+    "is_custom_stitched": true,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-043.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?blouse+fabric+india&sig=42"
+  },
+  "PROD-044": {
+    "name": "Peach Cotton Kurta",
+    "category": "kurta",
+    "subcategory": "cotton_kurta",
+    "price": 1099,
+    "sizes": {
+      "S": 4,
+      "M": 6,
+      "L": 5,
+      "XL": 3
+    },
+    "colors": [
+      "Peach",
+      "Salmon"
+    ],
+    "fabric": "Cotton",
+    "occasion": [
+      "casual",
+      "daily_wear",
+      "office"
+    ],
+    "description": "Fresh peach cotton kurta with subtle pintuck detailing and a relaxed fit, a soft and elegant option for warm days.",
+    "care": "Machine wash cold",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-044.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?peach+kurta+india+fashion&sig=43"
+  },
+  "PROD-045": {
+    "name": "Green Silk Kurta",
+    "category": "kurta",
+    "subcategory": "silk_kurta",
+    "price": 3999,
+    "sizes": {
+      "S": 1,
+      "M": 2,
+      "L": 1,
+      "XL": 0
+    },
+    "colors": [
+      "Emerald Green",
+      "Green"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "festive",
+      "wedding",
+      "party"
+    ],
+    "description": "Luxurious emerald green silk kurta with hand-embroidered peacock motifs on the yoke and sleeves, a statement piece for special occasions.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-045.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?green+kurta+india+fashion&sig=44"
+  },
+  "PROD-046": {
+    "name": "Indigo Cotton Kurta",
+    "category": "kurta",
+    "subcategory": "cotton_kurta",
+    "price": 1349,
+    "sizes": {
+      "S": 5,
+      "M": 5,
+      "L": 4,
+      "XL": 2
+    },
+    "colors": [
+      "Indigo",
+      "Blue"
+    ],
+    "fabric": "Cotton",
+    "occasion": [
+      "casual",
+      "daily_wear",
+      "office"
+    ],
+    "description": "Deep indigo cotton kurta with Dabu block print and a relaxed kurta silhouette, a true celebration of Rajasthani craft for everyday wear.",
+    "care": "Machine wash cold",
+    "is_custom_stitched": false,
+    "is_on_sale": true,
+    "image_url": "/products/PROD-046.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?indigo+blue+kurta+india+fashion&sig=45"
+  },
+  "PROD-047": {
+    "name": "White Anarkali Set",
+    "category": "anarkali",
+    "subcategory": "anarkali_set",
+    "price": 5999,
+    "sizes": {
+      "S": 1,
+      "M": 1,
+      "L": 1,
+      "XL": 0
+    },
+    "colors": [
+      "White",
+      "Off-White"
+    ],
+    "fabric": "Silk",
+    "occasion": [
+      "wedding",
+      "festive",
+      "party"
+    ],
+    "description": "Pristine white silk anarkali with intricate silver thread embroidery and a long flowing silhouette, an ethereal choice for engagements and receptions.",
+    "care": "Dry clean only",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-047.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?white+anarkali+salwar+india&sig=46"
+  },
+  "PROD-048": {
+    "name": "Lavender Chiffon Dupatta",
+    "category": "dupatta",
+    "subcategory": "chiffon_dupatta",
+    "price": 599,
+    "sizes": {
+      "Free Size": 18
+    },
+    "colors": [
+      "Lavender",
+      "Purple"
+    ],
+    "fabric": "Chiffon",
+    "occasion": [
+      "casual",
+      "party",
+      "festive"
+    ],
+    "description": "Ethereal lavender chiffon dupatta with a printed border, light as a feather and perfect for pairing with festive and party outfits.",
+    "care": "Hand wash gently",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-048.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?lavender+dupatta+stole+india&sig=47"
+  },
+  "PROD-049": {
+    "name": "Mauve Georgette Stole",
+    "category": "stole",
+    "subcategory": "georgette_stole",
+    "price": 599,
+    "sizes": {
+      "Free Size": 16
+    },
+    "colors": [
+      "Mauve",
+      "Pink"
+    ],
+    "fabric": "Georgette",
+    "occasion": [
+      "casual",
+      "office",
+      "party"
+    ],
+    "description": "Soft mauve georgette stole with a subtle printed pattern, a versatile accessory that elevates both ethnic and indo-western outfits.",
+    "care": "Hand wash gently",
+    "is_custom_stitched": false,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-049.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?mauve+pink+shawl+pashmina+india&sig=48"
+  },
+  "PROD-050": {
+    "name": "Custom Stitched Anarkali",
+    "category": "anarkali",
+    "subcategory": "custom_anarkali",
+    "price": 4999,
+    "sizes": {
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0
+    },
+    "colors": [
+      "All Colors Available"
+    ],
+    "fabric": "Georgette",
+    "occasion": [
+      "festive",
+      "wedding",
+      "party"
+    ],
+    "description": "Bespoke custom-stitched anarkali tailored to your exact measurements with embroidery of your choice, requires 10-12 days for preparation.",
+    "care": "Dry clean only",
+    "is_custom_stitched": true,
+    "is_on_sale": false,
+    "image_url": "/products/PROD-050.jpg",
+    "image_fallback": "https://source.unsplash.com/300x400/?anarkali+salwar+india&sig=49"
+  }
+}
