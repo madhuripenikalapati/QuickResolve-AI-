@@ -8,7 +8,7 @@ export default function MessageBubble({ message }) {
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-3`}>
       {!isUser && (
         <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-semibold mr-2 mt-1 shrink-0">
-          NB
+          TB
         </div>
       )}
       <div className={`${hasProducts ? 'max-w-[95%] w-full' : 'max-w-[75%]'}`}>

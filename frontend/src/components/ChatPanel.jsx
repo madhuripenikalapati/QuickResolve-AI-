@@ -128,7 +128,7 @@ export default function ChatPanel({ onTurnComplete }) {
         {loading && (
           <div className="flex justify-start mb-3">
             <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-semibold mr-2 mt-1 shrink-0">
-              NB
+              TB
             </div>
             <div className="bg-white border border-slate-100 shadow-sm rounded-2xl rounded-bl-sm px-4 py-3">
               <div className="flex gap-1">
