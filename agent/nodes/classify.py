@@ -44,8 +44,8 @@ def _fast_classify(message: str, session: dict):
     last_shown = session.get("last_shown_products", [])
     active_product = session.get("active_product")
 
-    # Explicit order phrases
-    if any(phrase in msg_lower for phrase in _ORDER_PHRASES):
+    # Explicit order phrases — use word boundaries to avoid "order karo" matching inside "order karoon"
+    if any(re.search(rf'\b{re.escape(phrase)}\b', msg_lower) for phrase in _ORDER_PHRASES):
         return "place_order"
 
     # "order L" / "order XL" / "book M" etc. with a size
@@ -57,6 +57,12 @@ def _fast_classify(message: str, session: dict):
     if re.search(r'\border\b', msg_lower) and (last_shown or active_product):
         if not re.search(r'\b(my order|order status|order id|where is|track|cancel)\b', msg_lower):
             return "place_order"
+
+    # Standalone payment method with active ordering context → always place_order
+    # Catches "UPI", "COD", "Card" after a failed payment or mid-order clarification
+    _PAYMENT_WORDS = {"upi", "cod", "card", "gpay", "phonepay", "cash", "credit card", "debit card"}
+    if msg_lower.strip() in _PAYMENT_WORDS and (active_product or session.get("pending_clarification")):
+        return "place_order"
 
     # Confirmation words — infer intent from what the agent last asked
     if msg_lower in _CONFIRM_WORDS:
@@ -92,6 +98,10 @@ def _fast_classify(message: str, session: dict):
 
     # Order-ID pattern
     if re.search(r'\bORD-\d+\b', msg, re.IGNORECASE):
+        return "order_support"
+
+    # Post-order action words — always order_support regardless of product context
+    if re.search(r'\b(refund|return|exchange|cancel|cancellation|where is my order|track my order)\b', msg_lower):
         return "order_support"
 
     # Policy keywords — COD, shipping timelines, refund/return/exchange policy questions

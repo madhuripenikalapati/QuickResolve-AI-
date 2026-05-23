@@ -109,6 +109,15 @@ def update_memory(state: AgentState) -> dict:
     else:
         session.pending_clarification = None
 
+    # If create_order failed due to payment (COD rejected), flag clarification so next
+    # message like "UPI" is correctly routed as place_order, not order_support.
+    for tc in state.get("current_tool_calls", []):
+        if tc.get("tool") == "create_order":
+            err = (tc.get("result") or {}).get("error", "")
+            if err and ("cod" in err.lower() or "payment" in err.lower()):
+                session.pending_clarification = "payment method (COD not available — please choose UPI or Card)"
+                break
+
     intent = state.get("intent")
     if intent == "place_order" and not state.get("needs_clarification"):
         session.stage = "ordering"

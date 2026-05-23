@@ -39,7 +39,9 @@ def check_tool_hallucination(response: str, tool_calls: list[dict], expected: di
 
     has_price = bool(re.search(r'₹\s*\d+', response))
     has_catalog_call = any(t in actual_tools for t in ["search_catalog", "check_availability", "get_product"])
-    if has_price and not has_catalog_call:
+    # Price can also come from order tools — not a hallucination if get_order/create_order ran
+    has_order_call = any(t in actual_tools for t in ["get_order", "create_order", "update_order"])
+    if has_price and not has_catalog_call and not has_order_call:
         return False
 
     availability_words = ["in stock", "available", "out of stock", "not available", "units left"]
