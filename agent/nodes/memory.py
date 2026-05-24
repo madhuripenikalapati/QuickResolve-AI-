@@ -81,24 +81,35 @@ def update_memory(state: AgentState) -> dict:
                 if candidate and len(candidate.split()) <= 4 and re.match(r'^[A-Za-z\s]+$', candidate):
                     session.buyer_name = candidate
 
-        # Pin active_product if user names/colors/ordinal-references a product from last_shown_products
+        # Pin active_product only if message unambiguously references exactly ONE product.
+        # If user mentioned multiple products/colors ("mint green or orange"), don't pin.
         if not session.active_product and session.last_shown_products:
             msg_lower = last_user_msg.lower()
+
+            # Name-based: collect ALL matches first, pin only if exactly one
+            name_matches = []
             for product in session.last_shown_products:
                 name_parts = product.get("name", "").lower().split()
                 meaningful = [w for w in name_parts if len(w) > 3]
                 if meaningful and sum(1 for w in meaningful if w in msg_lower) >= min(2, len(meaningful)):
-                    session.active_product = product
-                    break
-            # Color-based pin: "the green one", "order that orange kurta"
+                    name_matches.append(product)
+            if len(name_matches) == 1:
+                session.active_product = name_matches[0]
+
+            # Color-based pin: pin only if all color mentions point to the same single product
             if not session.active_product:
+                color_matched_ids: set = set()
                 for _c in sorted(CATALOG_COLORS, key=len, reverse=True):
                     if _c in msg_lower:
                         _cm = [p for p in session.last_shown_products
                                if any(_c == pc.lower() for pc in p.get("colors", []))]
-                        if len(_cm) == 1:
-                            session.active_product = _cm[0]
-                            break
+                        color_matched_ids.update(p.get("product_id") for p in _cm)
+                if len(color_matched_ids) == 1:
+                    _pid = next(iter(color_matched_ids))
+                    session.active_product = next(
+                        (p for p in session.last_shown_products if p.get("product_id") == _pid), None
+                    )
+
             # Ordinal-based pin: "the first one", "option 2", "second product"
             if not session.active_product:
                 _ord = re.search(
