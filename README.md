@@ -26,7 +26,7 @@ QuickResolve AI powers customer support for **Taara Boutique** — an Instagram 
 | Search | sentence-transformers (all-MiniLM-L6-v2) + FAISS |
 | Backend | Python 3.9+ + FastAPI |
 | Frontend | React (Vite) + Tailwind CSS |
-| Eval | Custom framework – 4 metrics, 30+ test cases |
+| Eval | Custom framework – 4 metrics, 34 test cases |
 
 ## Quick Start
 
