@@ -172,8 +172,8 @@ def _select_catalog_tool(message: str, session: dict) -> dict:
         "what are the size", "available size", "size do you have", "sizes do you",
     ]
     # Active product already selected + user picks a size → check that specific product's availability
-    # Don't filter ALL last_shown — user is talking about the one they already chose
-    if product and detected_size:
+    # Skip if category is in args — "show me kurtas in XXL" is a catalog search, not an availability check
+    if product and detected_size and not args.get("category"):
         return {
             "tool_to_call": "check_availability",
             "tool_args": {"product_id": product.get("product_id"), "size": detected_size},
