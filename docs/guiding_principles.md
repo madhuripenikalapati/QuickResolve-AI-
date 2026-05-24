@@ -52,7 +52,7 @@ The current production log (`logger.info` in `api/routes/chat.py`) emits these f
 
 One metric not yet in the production log but worth adding:
 
-- `tool_hallucination` rate — requires a post-turn checker that flags price/policy claims made without a supporting tool call. Eval shows 2 cases (6%) in order error edge cases. In production, any hallucination on price or policy breaks buyer trust permanently — worth the instrumentation cost.
+- `tool_hallucination` rate — requires a post-turn checker that flags price/policy claims made without a supporting tool call. Eval shows 0 hallucination cases (100% clean) after fixing the scorer to correctly attribute COD restriction responses to the order tool. In production, any hallucination on price or policy breaks buyer trust permanently — worth the instrumentation cost.
 
 **What I'd fix first:**
 
@@ -73,7 +73,7 @@ I wrote a custom eval suite because existing frameworks (Ragas, DeepEval) measur
 | Tool Validity | Were the right tools called? Were there duplicate calls? | Wrong tool = wrong answer, even if the LLM sounds confident |
 | Graceful Failure | When something went wrong, did the agent handle it without crashing or exposing errors? | Edge cases happen in production. Crashing is worse than saying "I'm not sure." |
 
-**Current scores:** 94% task completion (32/34) · 94% no hallucination (32/34) · 100% tool validity (34/34) · 89% graceful failure (16/18)
+**Current scores:** 94% task completion (32/34) · 100% no hallucination (34/34) · 100% tool validity (34/34) · 94% graceful failure (17/18)
 
 **What the eval caught that I would have missed:**
 - "Return policy" being routed to `order_support` because the word "return" triggered the wrong rule — **fixed**
