@@ -36,7 +36,7 @@ The three tools were chosen by collapsing what could be six or seven tools into 
 | # | What | Why | Users at which it breaks |
 |---|------|-----|--------------------------|
 | 1 | In-memory sessions | Lost on restart, can't scale horizontally | ~50 concurrent |
-| 2 | Groq free tier (500K TPD) | 10k users × 5 turns × 400 tokens = 20M tokens/day | ~2,000 DAU |
+| 2 | Groq free tier (500K TPD/key) | Each turn uses ~2,000–3,000 tokens (prompt templates + tool results + session context). 4 free keys ≈ 2M tokens/day → supports ~100–150 active users/day | ~100–150 DAU |
 | 3 | Single-process FastAPI | `agent.invoke()` blocks 3–8s per request | ~20 concurrent |
 | 4 | In-memory orders | No persistence, no cross-instance consistency | ~50 concurrent |
 | 5 | difflib fuzzy matching | False positives increase with catalog size | ~200+ products |
@@ -87,7 +87,7 @@ Each of these was caught by the eval, fixed, and verified by re-running. Without
 | Instagram Graph API / WhatsApp Business API | Integration is 2-3 days of OAuth + webhook setup. The agent logic is what needed proving first. The API layer is additive once the core is reliable. |
 | Persistent storage (Redis + PostgreSQL) | In-memory is fine for a demo. Adding persistence before proving the agent's reliability would have been optimising the wrong layer. |
 | Per-user auth and rate limiting | No public deployment. Would add before opening to real users. |
-| Streaming LLM responses | FastAPI + SSE is straightforward but adds latency complexity to the eval. Skipped to keep the eval deterministic. |
+| Streaming eval coverage | Streaming is implemented at `/api/chat/stream` and used by the frontend. The eval suite calls the non-streaming endpoint to get deterministic, comparable responses. Streaming itself is not a gap. |
 | Langfuse / distributed tracing | Structured JSON logs are in place. A trace store is the next step, not the first. |
 | Multi-seller support | One seller (my mom's boutique) is the target. Multi-tenancy is a future architectural change, not something to build speculatively. |
 | Voice messages | A significant portion of WhatsApp messages in India are voice notes. Whisper transcription is the fix. Not built because the text agent needed to be solid first. |

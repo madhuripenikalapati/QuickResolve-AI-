@@ -178,7 +178,7 @@ QuickResolve-AI-/
 | Bottleneck | Why | Fix |
 |---|---|---|
 | In-memory sessions | Lost on restart, can't horizontally scale | Redis with TTL |
-| Groq free tier (500K TPD) | 10k users × 5 turns × 400 tokens = 20M/day | Groq paid tier or self-hosted Llama |
+| Groq free tier (500K TPD/key) | Each turn uses ~2,000–3,000 tokens (prompts + tool results + session). 4 free keys ≈ 2M tokens/day — supports ~100–150 active users/day | Groq paid tier or self-hosted Llama |
 | Single-process FastAPI | `agent.invoke()` blocks ~3–8s per request | `uvicorn --workers 4` + async queue |
 | In-memory orders | No persistence, no consistency across instances | PostgreSQL |
 
