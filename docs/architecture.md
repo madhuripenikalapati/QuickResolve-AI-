@@ -394,7 +394,7 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 
 ### 5. Rule-based fallback coverage gaps
 
-**What breaks**: When all Groq keys are exhausted, `_rule_based_fallback()` handles 8 tool result shapes. Novel combinations (policy result + order result in same turn) return "I'm having trouble fetching that right now."
+**What breaks**: When all Groq keys are exhausted, `_rule_based_fallback()` covers the most common tool result shapes: catalog list, check_availability, get_order, create_order success/failure variants, get_policy, and pending clarification. Novel combinations (policy result + order result in same turn) fall through to "I'm having trouble fetching that right now."
 
 **Full fix**: Expand the fallback to cover combined tool result shapes (e.g. policy + order in same turn), or run a local Ollama instance as a second-tier fallback for the response generation node.
 

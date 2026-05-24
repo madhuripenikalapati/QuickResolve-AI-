@@ -35,10 +35,10 @@ The three tool modules were chosen by collapsing what could be six or seven tool
 
 | # | What | Why | Users at which it breaks |
 |---|------|-----|--------------------------|
-| 1 | In-memory sessions | Lost on restart, can't scale horizontally | ~50 concurrent |
+| 1 | In-memory sessions | Lost on every restart; can't share across multiple instances | Any server restart |
 | 2 | Groq free tier (500K TPD/key) | Each turn uses ~2,000–3,000 tokens (prompt templates + tool results + session context). 4 free keys ≈ 2M tokens/day → supports ~100–150 active users/day | ~100–150 DAU |
-| 3 | Single-process FastAPI | `agent.invoke()` blocks 3–8s per request | ~20 concurrent |
-| 4 | In-memory orders | No persistence, no cross-instance consistency | ~50 concurrent |
+| 3 | Single-process FastAPI | `agent.invoke()` blocks 3–8s per request; single uvicorn worker handles 1 blocking call at a time | ~1–4 concurrent |
+| 4 | In-memory orders | Lost on every restart; no consistency across instances | Any server restart |
 | 5 | difflib fuzzy matching | False positives increase with catalog size | ~200+ products |
 
 **What I'd monitor from Day 1:**
