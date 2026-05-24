@@ -270,10 +270,10 @@ Ragas and DeepEval are built for RAG pipelines — they measure retrieval faithf
 
 | Workflow | Happy Path | Edge Case | Adversarial | Total |
 |----------|-----------|-----------|-------------|-------|
-| discovery | 5 | 3 | 2 | 10 |
+| discovery | 6 | 3 | 2 | 11 |
 | pre_order | 2 | 2 | 1 | 5 |
 | ordering | 1 | 3 | 1 | 5 |
-| post_order | 4 | 4 | 2 | 10 |
+| post_order | 5 | 4 | 2 | 11 |
 | general | 2 | 0 | 0 | 2 |
 
 Happy path = standard buyer journey. Edge case = boundary conditions (out of stock, expired refund window, COD on custom items). Adversarial = nonsense queries ("do you have jeans?"), fake order IDs, policies not in the knowledge base.
@@ -316,7 +316,7 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 | What Was Skipped | Why |
 |-----------------|-----|
 | Multi-agent pipeline (router + specialists) | Over-engineering for 6 intents. One agent with conditional routing is simpler, faster, and easier to debug. A 12-agent pipeline for a boutique is a red flag. |
-| Redis / persistent session store | Already JSON-serializable. One-line change to swap in Redis. Out of scope for 2-day build. |
+| Redis / persistent session store | Already JSON-serializable. Contained change across 5 access points in `api/routes/chat.py`. Out of scope for 2-day build. |
 | Real Razorpay / payment gateway | Tool interface is identical whether mock or real. Adding payments adds compliance and ops surface. |
 | Buyer login / phone verification | WhatsApp handles identity at the channel level. Not needed for reliability testing. |
 | Policy management CMS | 4 policies are stable. A CMS adds a system to maintain with no reliability gain. |
@@ -332,7 +332,7 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 
 | Component | Breaks At | Why |
 |-----------|-----------|-----|
-| Groq free tier | ~100 concurrent users | 6,000 TPM per key × 4 keys = 24,000 TPM. 100k users/day at ~2,000 tokens/turn needs ~140,000 TPM. |
+| Groq free tier | ~100–150 DAU | 500K TPD per key × 4 keys = 2M tokens/day. Each turn uses ~2,000 tokens. At ~7 turns per conversation, supports ~143 active users/day. Under bursty load (many concurrent requests), the 6,000 TPM per-key rate limit kicks in first. |
 | In-memory sessions | Server restart | Every deployment wipes all active sessions. Users lose mid-conversation context. |
 | In-memory orders | Server restart | All order data lost. Also doesn't scale across multiple server instances. |
 | FAISS index | ~500k products | Loaded into RAM at startup. Fine for 50-product demo catalog, not for a real boutique. |
