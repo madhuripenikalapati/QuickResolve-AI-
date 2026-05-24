@@ -197,7 +197,7 @@ The agent never applies business rules itself — the tool does. If the tool rej
 
 When a buyer says "order in L, COD" and then provides their address in the next message, the agent doesn't re-ask for size or payment — it reads from `pending_size` and `payment_preference`. The `pending_clarification` field ensures that if the agent asked "what size?" and the buyer replies "M", the classifier routes it correctly as `place_order` continuation rather than a standalone size query.
 
-**Production path**: replace the `dict[session_id, dict]` in `api/routes/chat.py` with Redis. The state is already JSON-serializable — one-line change.
+**Production path**: replace the `dict[session_id, dict]` in `api/routes/chat.py` with Redis. The state is already JSON-serializable — `sessions.get(id)` becomes `json.loads(r.get(id))`, `sessions[id] = ...` becomes `r.setex(id, ttl, json.dumps(...))`. A small, contained change.
 
 ---
 
@@ -336,7 +336,7 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 | In-memory sessions | Server restart | Every deployment wipes all active sessions. Users lose mid-conversation context. |
 | In-memory orders | Server restart | All order data lost. Also doesn't scale across multiple server instances. |
 | FAISS index | ~500k products | Loaded into RAM at startup. Fine for 50-product demo catalog, not for a real boutique. |
-| Single FastAPI instance | ~500 concurrent connections | No load balancing, no horizontal scaling. |
+| Single FastAPI instance | ~1–4 concurrent requests | `agent.invoke()` blocks each worker for 3–8s. A single uvicorn worker handles 1 request at a time. Not a connection limit — a blocking call limit. |
 
 ### What to monitor (Day 1 of production)
 
@@ -349,7 +349,7 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 ### What to fix, in order
 
 1. **Replace Groq free tier with paid** — $10/month eliminates rate limit problem entirely.
-2. **Add Redis session store** — one-line change in `api/routes/chat.py`. Eliminates session loss on restart and enables horizontal scaling.
+2. **Add Redis session store** — contained change in `api/routes/chat.py` (5 access points, all JSON-serializable already). Eliminates session loss on restart and enables horizontal scaling.
 3. **Persist orders to SQLite/Postgres** — one-file change in `tools/orders.py`. Same schema, just swap the in-memory dict.
 4. **Horizontal scaling** — FastAPI + Redis sessions means any number of instances behind a load balancer.
 5. **Replace FAISS with hosted vector DB** (Pinecone, Weaviate) — eliminates the RAM constraint on catalog size.
