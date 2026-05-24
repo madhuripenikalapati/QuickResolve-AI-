@@ -283,10 +283,10 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 
 | Metric | Score |
 |--------|-------|
-| Task Completion | **32/34 — 94%** |
+| Task Completion | **31/34 — 91%** |
 | No Tool Hallucination | **34/34 — 100%** |
 | Tool Validity | **34/34 — 100%** |
-| Graceful Failure Handling | **17/18 — 94%** |
+| Graceful Failure Handling | **16/18 — 89%** |
 
 **By workflow:**
 
@@ -295,12 +295,13 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 | discovery | 11/11 | 0 | 0 |
 | pre_order | 4/5 | 1 | 0 |
 | ordering | 5/5 | 0 | 0 |
-| post_order | 10/11 | 1 | 0 |
+| post_order | 9/11 | 2 | 0 |
 | general | 2/2 | 0 | 0 |
 
-**Remaining 2 partials**:
+**Remaining 3 partials**:
 - `postorder_edge_01`: Refund request on ORD-1004 (delivered 8 days ago — outside the 7-day window). LLM says "eligible" because it doesn't know today's date. Fix: inject `datetime.date.today()` into the response prompt.
 - `preorder_adversarial_01`: "What is your gift wrapping policy?" — RAG returned exchange policy content instead of saying the policy doesn't exist. Fix: add a policy-not-found check before returning RAG results.
+- `multi_turn_02`: LLM occasionally surfaces order delivery details instead of refund eligibility when the second turn is just an order ID. Cause: short turn lacks refund context; the policy result doesn't dominate the response. Fix: persist `pending_intent` in session so the response prompt stays anchored to the original request.
 
 ### Before/After: Key Eval Improvements
 

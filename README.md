@@ -129,10 +129,10 @@ User Message
 
 | Metric | Score | Detail |
 |--------|-------|--------|
-| Task Completion | **94%** | 32/34 pass |
+| Task Completion | **91%** | 31/34 pass |
 | No Hallucination | **100%** | 34/34 clean |
 | Valid Tool Use | **100%** | 34/34 valid |
-| Graceful Failure | **94%** | 17/18 graceful |
+| Graceful Failure | **89%** | 16/18 graceful |
 
 Run `curl -X POST http://localhost:8000/api/eval/run` or use the **Eval** tab in the UI to re-run.
 

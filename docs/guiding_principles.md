@@ -73,7 +73,7 @@ I wrote a custom eval suite because existing frameworks (Ragas, DeepEval) measur
 | Tool Validity | Were the right tools called? Were there duplicate calls? | Wrong tool = wrong answer, even if the LLM sounds confident |
 | Graceful Failure | When something went wrong, did the agent handle it without crashing or exposing errors? | Edge cases happen in production. Crashing is worse than saying "I'm not sure." |
 
-**Current scores:** 94% task completion (32/34) · 100% no hallucination (34/34) · 100% tool validity (34/34) · 94% graceful failure (17/18)
+**Current scores:** 91% task completion (31/34) · 100% no hallucination (34/34) · 100% tool validity (34/34) · 89% graceful failure (16/18)
 
 **What the eval caught that I would have missed:**
 - "Return policy" being routed to `order_support` because the word "return" triggered the wrong rule — **fixed**
