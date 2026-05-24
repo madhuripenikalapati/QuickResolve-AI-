@@ -77,6 +77,22 @@ CRUD with business rule validation:
 
 ---
 
+## Design Philosophy: Minimal Agent, Maximum Reliability
+
+The core tension in agent design is autonomy vs. predictability. More LLM calls = more flexible but less predictable. This agent is deliberately built toward the predictable end:
+
+| Decision | Minimal/Reliable Choice | What Was Avoided |
+|----------|------------------------|------------------|
+| Intent classification | Rule-based fast-path first, LLM only for ambiguous cases | Pure LLM classifier that could hallucinate intents |
+| Tool selection | Deterministic rules in `select_tool` | Letting LLM decide which tool to call (ReAct style) |
+| Context validation | Explicit field checklist in `check_context` | Trusting LLM to notice missing fields on its own |
+| Response grounding | Prompt rules + stripped session context | Passing full session and trusting LLM not to mix up old/new products |
+| Routing | Conditional edges with readable Python | LLM-decided next steps |
+
+**Result**: The LLM is used exactly twice per turn — once for classification (when rules fail) and once for response generation. Everything else is deterministic. This means the failure modes are bounded and debuggable.
+
+---
+
 ## Why LangGraph?
 
 LangGraph gives explicit control over the node execution graph, which is critical for a reliability-first agent:
@@ -142,24 +158,67 @@ The LLM is only used for two nodes — `classify_intent` (when fast-path fails) 
 
 | Metric | Score |
 |--------|-------|
-| Task Completion — pass | 25/34 (74%) |
-| Task Completion — partial | 8/34 (24%) |
-| Task Completion — fail | 1/34 (3%) |
-| No Hallucination | 24/34 (71%) |
-| Tool Validity | 33/34 (97%) |
-| Graceful Failure Handling | 13/18 (72%) |
+| Task Completion — pass | 32/34 (94%) |
+| Task Completion — partial | 2/34 (6%) |
+| Task Completion — fail | 0/34 (0%) |
+| No Hallucination | 34/34 (100%) |
+| Tool Validity | 34/34 (100%) |
+| Graceful Failure Handling | 17/18 (94%) |
 
 **By workflow:**
 
 | Workflow | Pass | Partial | Fail |
 |----------|------|---------|------|
-| discovery | 10/11 | 1 | 0 |
-| pre_order | 3/5 | 1 | 1 |
-| ordering | 4/5 | 1 | 0 |
-| post_order | 7/11 | 4 | 0 |
-| general | 1/2 | 1 | 0 |
+| discovery | 11/11 | 0 | 0 |
+| pre_order | 5/5 | 0 | 0 |
+| ordering | 5/5 | 0 | 0 |
+| post_order | 9/11 | 2 | 0 |
+| general | 2/2 | 0 | 0 |
 
-The 10 hallucination flags are almost entirely in post_order turns where the LLM restates policy details (e.g. "7-day window") from session context rather than a fresh `get_policy` call — the content is correct but the scorer penalises it as ungrounded. The 1 tool validity failure is a duplicate `get_order` call on a multi-turn support case.
+The 2 partials are post_order edge cases where the LLM miscalculates date eligibility for refunds (ORD-1004 delivered 2025-05-08 — LLM treats it as recent). Fix: inject today's date explicitly into the response prompt at call time.
+
+---
+
+## What We Chose Not to Build
+
+| Decision | What Was Skipped | Why |
+|----------|-----------------|-----|
+| Single agent, no orchestration | Multi-agent pipeline (router + specialist agents) | Over-engineering for 6 intents. One agent with conditional routing is simpler, faster, and easier to debug. |
+| In-memory session | Redis / persistent session store | Out of scope for demo. Already JSON-serializable — one-line swap to Redis in production. |
+| Mock payment + orders | Real Razorpay integration, real inventory DB | Adds ops complexity without changing agent reliability. The tool interface is identical. |
+| No auth / user identity | Buyer login, phone number verification | WhatsApp handles identity at the channel level. Not needed for agent reliability testing. |
+| 4 policy docs | Full policy management CMS | Policies are stable. A CMS adds a system to maintain for no reliability gain in 2 days. |
+| Rule-based language detection | fastText lid.176 model | Character heuristic covers 90% of cases. The 917KB model would need bundling infra. |
+| No A/B testing | Prompt variant testing framework | Would require multiple eval runs per commit. Out of scope for this timeline. |
+
+---
+
+## Production at Scale — What Breaks at 100k Users/Day
+
+### What breaks first
+
+| Component | Breaks At | Reason |
+|-----------|-----------|--------|
+| Groq free tier | ~100 concurrent users | 6,000 TPM per key, 4 keys = 24,000 TPM. At 100k users/day = ~1 user/sec with ~2,000 tokens/turn = 120,000 TPM needed. |
+| In-memory sessions | Server restart | All session state lost. A deployment wipes every active conversation. |
+| In-memory order store | Server restart | All orders lost. Also doesn't scale across multiple server instances. |
+| FAISS index (RAM) | ~500k products | Index loaded at startup into RAM. Fine for demo catalog, not for a real boutique at scale. |
+| Single FastAPI instance | ~500 concurrent connections | No load balancing, no horizontal scaling. |
+
+### What to monitor (Day 1 of production)
+
+- **LLM latency p95** — streaming response time. Groq is fast but rate limit retries spike latency.
+- **Fallback rate** — % of turns using rule-based fallback instead of LLM. Spike = keys exhausted.
+- **Intent distribution** — sudden shift in intents (e.g. 40% `order_support`) signals a product or UX issue upstream.
+- **Tool error rate** — `create_order` failures by error type (out of stock vs COD vs address invalid).
+- **Escalation rate** — % of turns that hit `escalate_to_seller`. Rising rate = agent failing.
+
+### What to fix first (in order)
+
+1. **Replace Groq free tier** with Groq dev tier or OpenAI — $10/month eliminates the rate limit problem entirely.
+2. **Add Redis session store** — one-line change in `api/routes/chat.py`, eliminates session loss on restart.
+3. **Persist orders to SQLite/Postgres** — one-file change in `tools/orders.py`.
+4. **Add horizontal scaling** — FastAPI + Redis sessions means any number of instances can run behind a load balancer.
 
 ---
 

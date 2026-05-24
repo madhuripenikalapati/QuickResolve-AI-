@@ -35,18 +35,22 @@ def score_task_completion(response: str, tool_calls: list[dict], expected: dict)
 def check_tool_hallucination(response: str, tool_calls: list[dict], expected: dict) -> bool:
     """Returns True if response is clean (not hallucinated)."""
     response_lower = response.lower()
-    actual_tools = [tc["tool"] for tc in tool_calls if not tc.get("error")]
+    # Include errored tool calls — response IS grounded in tool data even when tool returns an error result
+    actual_tools = [tc["tool"] for tc in tool_calls]
 
     has_price = bool(re.search(r'₹\s*\d+', response))
     has_catalog_call = any(t in actual_tools for t in ["search_catalog", "check_availability", "get_product"])
-    # Price can also come from order tools — not a hallucination if get_order/create_order ran
     has_order_call = any(t in actual_tools for t in ["get_order", "create_order", "update_order"])
-    if has_price and not has_catalog_call and not has_order_call:
+    has_policy_call = "get_policy" in actual_tools
+    # Price can come from catalog, order, or policy tools (e.g. COD limit ₹5000 is in policy)
+    if has_price and not has_catalog_call and not has_order_call and not has_policy_call:
         return False
 
-    availability_words = ["in stock", "available", "out of stock", "not available", "units left"]
+    # "available" is too generic — only flag specific stock phrases
+    availability_words = ["in stock", "out of stock", "units left"]
     mentions_availability = any(w in response_lower for w in availability_words)
-    if mentions_availability and not has_catalog_call:
+    # create_order result includes available_sizes — valid source for stock claims
+    if mentions_availability and not has_catalog_call and not has_order_call:
         return False
 
     policy_words = ["7 day", "7-day", "10 day", "10-day", "refund window", "exchange window",

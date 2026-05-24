@@ -12,7 +12,10 @@ _SIZE_PATTERN = re.compile(r'^(XS|S|M|L|XL|XXL|FREE\s*SIZE)$', re.IGNORECASE)
 _POLICY_PATTERN = re.compile(
     r'\b(cod available|cash on delivery available|refund policy|return policy|exchange policy|'
     r'cancellation policy|shipping time|delivery time|kab tak|kitne din|how many days|'
-    r'is cod|cod par|cod milega|cod hoga|return mil|refund milega)\b',
+    r'is cod|cod par|cod milega|cod hoga|return mil|refund milega|'
+    r'what is your (return|refund|exchange|cancellation|shipping|delivery)|'
+    r'do you (accept|allow|have|offer) (return|exchange|refund|gift wrap|wrap)|'
+    r'gift wrap|gift wrapping)\b',
     re.IGNORECASE
 )
 _HINDI_BROWSE_PATTERNS = ["dikhao", "dikhaiye", "dikha", "batao", "kuch acha", "kuch accha",
@@ -43,6 +46,10 @@ def _fast_classify(message: str, session: dict):
     msg_lower = msg.lower().rstrip("!. ")
     last_shown = session.get("last_shown_products", [])
     active_product = session.get("active_product")
+
+    # 6-digit pincode = Indian delivery address — always place_order in this context
+    if re.search(r'\b\d{6}\b', msg) and not re.search(r'\b(order|ORD)-?\d{6}\b', msg, re.IGNORECASE):
+        return "place_order"
 
     # Explicit order phrases — use word boundaries to avoid "order karo" matching inside "order karoon"
     if any(re.search(rf'\b{re.escape(phrase)}\b', msg_lower) for phrase in _ORDER_PHRASES):
@@ -100,13 +107,16 @@ def _fast_classify(message: str, session: dict):
     if re.search(r'\bORD-\d+\b', msg, re.IGNORECASE):
         return "order_support"
 
+    # Policy keywords — must check BEFORE order_support so "return policy" / "can I exchange?" aren't misrouted
+    if _POLICY_PATTERN.search(msg):
+        return "policy_question"
+    # "can I exchange/return X?" with no active order → policy enquiry, not order action
+    if re.search(r'\bcan\s+i\s+(exchange|return|get\s+a?\s*refund)\b', msg_lower) and not session.get("active_order_id"):
+        return "policy_question"
+
     # Post-order action words — always order_support regardless of product context
     if re.search(r'\b(refund|return|exchange|cancel|cancellation|where is my order|track my order)\b', msg_lower):
         return "order_support"
-
-    # Policy keywords — COD, shipping timelines, refund/return/exchange policy questions
-    if _POLICY_PATTERN.search(msg):
-        return "policy_question"
 
     # Ordinal product selection while products are in context: "first one", "option 2"
     if last_shown and re.search(

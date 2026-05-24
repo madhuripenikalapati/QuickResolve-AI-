@@ -119,7 +119,10 @@ def build_response_prompt(state: AgentState) -> dict:
             message=last_message,
         )
 
-    system_content = SYSTEM_PROMPT.format(session_state=json.dumps(session, indent=2, default=str))
+    # Strip heavy fields from session before injecting into system prompt to stay under TPM limits
+    session_for_system = {k: v for k, v in session.items()
+                          if k not in ("last_shown_products", "recent_messages")}
+    system_content = SYSTEM_PROMPT.format(session_state=json.dumps(session_for_system, indent=2, default=str))
 
     return {
         "system": system_content,
