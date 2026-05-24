@@ -128,7 +128,7 @@ Streaming SSE Response → React Frontend
 
 ### Why 3 tools instead of more?
 
-Each tool is a failure surface. Fewer tools = fewer wrong selections. `search_catalog` handles both browsing and availability checks. `get_policy` handles all 4 policy types via RAG. Adding separate tools for each policy or each catalog operation would multiply the ways the agent could call the wrong one.
+Each tool is a failure surface. Fewer decision points = fewer wrong selections. The catalog module (`search_catalog`, `check_availability`, `get_product`) handles all discovery and stock queries. `get_policy` handles all 4 policy types via RAG. The orders module (`get_order`, `create_order`, `update_order`) handles the full lifecycle. Grouping by module — not by operation — keeps the routing surface small.
 
 ### Tool 1 — Catalog Search (`tools/catalog.py`)
 

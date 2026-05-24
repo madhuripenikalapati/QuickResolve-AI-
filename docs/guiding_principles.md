@@ -25,7 +25,7 @@ Why rule-based over LLM for routing? Four concrete reasons:
 
 The LLM is still used for genuinely ambiguous messages — multi-intent queries, sarcasm, mixed-language requests where rules can't decide. That's the right tradeoff: deterministic code for the easy 70%, LLM for the hard 30%.
 
-The three tools were chosen by collapsing what could be six or seven tools into three. `search_catalog` handles both product browsing and availability checks. `get_policy` handles all four policy types via RAG. Fewer tools = fewer wrong selections. This is the core of "minimal agent, maximum reliability."
+The three tool modules were chosen by collapsing what could be six or seven tools into three logical groups. The catalog module (`search_catalog`, `check_availability`, `get_product`) handles all discovery and stock queries. The orders module (`get_order`, `create_order`, `update_order`) handles the full order lifecycle. `get_policy` handles all four policy types via RAG. Fewer decision points = fewer wrong selections. This is the core of "minimal agent, maximum reliability."
 
 ---
 
