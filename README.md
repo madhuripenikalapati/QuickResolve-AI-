@@ -68,7 +68,11 @@ LLM_PROVIDER=groq
 ```bash
 # Terminal 1: Backend
 python3 run.py
+```
 
+> **First run only**: the server downloads the `all-MiniLM-L6-v2` sentence-transformer model (~22MB) to build the FAISS index. This takes 30–60s. You'll see `Application startup complete` when it's ready.
+
+```bash
 # Terminal 2: Frontend
 cd frontend
 npm run dev
