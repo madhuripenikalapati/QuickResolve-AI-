@@ -105,7 +105,7 @@ The rule: if it doesn't make the agent more reliable for the core 4 workflows (s
 
 **Mid-order topic switches.** Buyer asks about a kurta in L, then switches to asking about sarees, then says "order it." The agent may assemble a mismatched order: saree + size L from the kurta context. Current mitigation catches many cases but not all. Fix requires an `OrderDraft` dataclass scoped to one `(product_id, session)` tuple.
 
-**Telugu classification.** Short messages ("ok", "haan", "XL") are classified as English by the character-level heuristic. The agent replies in English even when the buyer has been writing in Telugu. Fix: fastText `lid.176.ftz` (917KB) for 176-language single-word classification.
+**Telugu classification.** Short messages ("ok", "haan", "XL") contain no Telugu/Hindi keywords, so the keyword-based heuristic classifies them as English. The agent replies in English even when the buyer has been writing in Telugu. Fix: fastText `lid.176.ftz` (917KB) for 176-language single-word classification.
 
 **Multi-product disambiguation.** "Order the silk one" when two silk sarees are in context — agent picks first in list. Should ask "Did you mean Red Silk (₹5,999) or Banarasi Silk (₹6,999)?" Requires a disambiguation node in the graph.
 

@@ -212,7 +212,7 @@ The core tension in agent design is **autonomy vs. predictability**. More LLM de
 | Context validation | Explicit field checklist in `check_context` | Trusting LLM to notice missing info | LLMs skip asking for information they can plausibly infer. Unreliable in production — you get inconsistent behaviour depending on how confident the model feels about the inference. |
 | Response grounding | Strict prompt rules + session context stripped before injection | Passing full session to LLM | Full session caused LLM to blend old product data into new search results. |
 | Graph routing | Conditional edges with Python code | LLM-decided next steps | Routing bugs are the hardest to debug. Code is always preferable to prompts for control flow. |
-| Language detection | Character-level heuristic + recent message inheritance | fastText language model | 917KB model adds deployment complexity. Heuristic handles 90% of cases. |
+| Language detection | Keyword-based heuristic on romanized text + recent message inheritance | fastText language model | 917KB model adds deployment complexity. Keyword list covers Telugu, Tamil, Kannada, Malayalam, Bengali, Marathi, and Hindi in Roman script. |
 
 **Result**: The LLM is called at most twice per turn — once for classification (only when fast-path rules fail) and once for response generation. All routing, tool selection, and context validation is deterministic code. Failure modes are bounded and debuggable.
 
@@ -320,7 +320,7 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 | Real Razorpay / payment gateway | Tool interface is identical whether mock or real. Adding payments adds compliance and ops surface. |
 | Buyer login / phone verification | WhatsApp handles identity at the channel level. Not needed for reliability testing. |
 | Policy management CMS | 4 policies are stable. A CMS adds a system to maintain with no reliability gain. |
-| fastText language ID model | Character heuristic + recent message inheritance covers 90% of cases. 917KB model needs deployment infra. |
+| fastText language ID model | Keyword heuristic covers romanized Telugu/Hindi/Tamil etc. well. 917KB model adds deployment infra for a marginal gain. |
 | Prompt A/B testing framework | Would require multiple eval runs per commit. Out of scope for 2-day build. |
 | Webhook / WhatsApp Business API | The agent logic is channel-agnostic. Connecting to WhatsApp API is a one-adapter change. |
 
@@ -410,7 +410,7 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 
 ### 7. Language detection on short replies
 
-**What breaks**: "ok", "XL", "haan" are classified as English by the character-level heuristic. Agent replies in English even if the buyer has been writing in Telugu for 5 turns.
+**What breaks**: "ok", "XL", "haan" contain no Telugu/Hindi keywords, so the keyword-based heuristic classifies them as English. Agent replies in English even if the buyer has been writing in Telugu for 5 turns.
 
 **Current mitigation**: Inherit language from `recent_messages` when current message is ≤4 words.
 
