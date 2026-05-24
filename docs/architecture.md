@@ -173,7 +173,7 @@ The agent never applies business rules itself — the tool does. If the tool rej
 | Refund | 7-day window from delivery, unused/original condition, excludes custom-stitched and sale items |
 | Exchange | 10-day window, one exchange per order, subject to size availability |
 | COD | Under ₹5,000 per order only (orders at exactly ₹5,000 are blocked), ₹49 convenience fee, blocked for custom items and international shipping |
-| Shipping | 5–7 business days, free above ₹1,499, courier tracking via Delhivery |
+| Shipping | 5–7 business days, free at ₹1,499 and above (code: `amount >= 1499`), courier tracking via Delhivery |
 
 ---
 

@@ -43,11 +43,16 @@ The three tool modules were chosen by collapsing what could be six or seven tool
 
 **What I'd monitor from Day 1:**
 
+The current production log (`logger.info` in `api/routes/chat.py`) emits these fields per turn:
+
 - `latency_ms` p95 — anything above 8s is a failed conversation
 - `tool_errors` rate by tool type — `create_order` failures tell you if stock data is stale
 - `escalated` rate — rising escalation = agent hitting its boundary
 - `intent=unclear` rate — rising unclear = new message patterns the classifier hasn't seen
-- `tool_hallucination` rate — eval shows 2 failing cases (6%) around order error edge cases. In production, any hallucination on price or policy needs immediate investigation — these directly break buyer trust
+
+One metric not yet in the production log but worth adding:
+
+- `tool_hallucination` rate — requires a post-turn checker that flags price/policy claims made without a supporting tool call. Eval shows 2 cases (6%) in order error edge cases. In production, any hallucination on price or policy breaks buyer trust permanently — worth the instrumentation cost.
 
 **What I'd fix first:**
 
