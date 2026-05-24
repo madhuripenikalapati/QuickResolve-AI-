@@ -308,6 +308,19 @@ def _select_order_tool(message: str, session: dict) -> dict:
                             _best_id, _best_score = p.get("product_id", ""), _sc
                 product_id = _best_id
 
+            # Ordinal selection: "the first one", "option 2", "second product"
+            if not product_id:
+                _ord_re = re.search(
+                    r'\b(first|second|third|1st|2nd|3rd)\b|\b(?:option|number|item)\s*([123])\b',
+                    _msg_l
+                )
+                if _ord_re:
+                    _w, _n = _ord_re.group(1), _ord_re.group(2)
+                    _imap = {"first": 0, "1st": 0, "second": 1, "2nd": 1, "third": 2, "3rd": 2}
+                    _i = (int(_n) - 1) if _n else _imap.get(_w, -1)
+                    if 0 <= _i < len(last_shown):
+                        product_id = last_shown[_i].get("product_id", "")
+
     return {
         "tool_to_call": "create_order",
         "tool_args": {
@@ -380,9 +393,17 @@ def _select_support_tool(message: str, session: dict) -> dict:
     }
 
     if needs_policy:
+        # If current message lacks the keyword (e.g. user just sent order ID), check recent messages
+        _kw_source = msg_lower
+        if not any(kw in _kw_source for kw in ("refund", "return", "exchange", "cancel")):
+            for _m in reversed(session.get("recent_messages", [])):
+                _prev = _m.get("user", "").lower()
+                if any(kw in _prev for kw in ("refund", "return", "exchange", "cancel")):
+                    _kw_source = _prev
+                    break
         policy_query = (
-            "refund policy conditions" if "refund" in msg_lower or "return" in msg_lower
-            else "exchange policy conditions" if "exchange" in msg_lower
+            "refund policy conditions" if "refund" in _kw_source or "return" in _kw_source
+            else "exchange policy conditions" if "exchange" in _kw_source
             else "cancellation policy"
         )
         result["needs_secondary_tool"] = True

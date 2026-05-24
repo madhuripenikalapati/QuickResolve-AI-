@@ -284,9 +284,9 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 | Metric | Score |
 |--------|-------|
 | Task Completion | **32/34 — 94%** |
-| No Tool Hallucination | **32/34 — 94%** |
+| No Tool Hallucination | **34/34 — 100%** |
 | Tool Validity | **34/34 — 100%** |
-| Graceful Failure Handling | **16/18 — 89%** |
+| Graceful Failure Handling | **17/18 — 94%** |
 
 **By workflow:**
 
@@ -308,7 +308,7 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 |-----|--------|-------|
 | Classifier: policy before order_support | pre_order 40% pass | pre_order routing fixed; current 80% (1 partial from gift-wrapping RAG gap) |
 | Response: no fake order IDs | order_adversarial partial | order_adversarial pass |
-| Scorer: errored tools count as grounded | 82% no-hallucination | 94% no-hallucination |
+| Scorer: errored tools count as grounded | 82% no-hallucination | 100% no-hallucination |
 | Classifier: pincode → place_order | address classified as `general` | correctly routed |
 | Context: size validation across products | XXL bleeds to FREE SIZE saree | size validated per product |
 

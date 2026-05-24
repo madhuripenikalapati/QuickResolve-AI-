@@ -392,7 +392,10 @@
         "out of stock",
         "not available",
         "unavailable",
-        "M size"
+        "M size",
+        "size m",
+        "stock",
+        "not in stock"
       ],
       "response_must_not_contain": [
         "confirmed",

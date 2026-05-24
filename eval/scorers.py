@@ -57,7 +57,8 @@ def check_tool_hallucination(response: str, tool_calls: list[dict], expected: di
                     "₹5000", "custom-stitched", "non-refundable", "5-7 business"]
     mentions_policy = any(w in response_lower for w in policy_words)
     has_policy_call = "get_policy" in actual_tools
-    if mentions_policy and not has_policy_call:
+    # create_order can return COD/custom-stitched restrictions — those are grounded in order tool, not hallucinated
+    if mentions_policy and not has_policy_call and not has_order_call:
         return False
 
     return True

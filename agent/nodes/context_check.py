@@ -94,6 +94,9 @@ def _message_references_shown_product(msg: str, last_shown: list) -> bool:
     if not last_shown:
         return False
     msg_lower = msg.lower()
+    # Ordinal reference: "the first one", "option 2", "second product"
+    if re.search(r'\b(first|second|third|1st|2nd|3rd)\b|\b(?:option|number|item)\s*[123]\b', msg_lower):
+        return True
     for product in last_shown:
         name_parts = product.get("name", "").lower().split()
         meaningful = [w for w in name_parts if len(w) > 3]

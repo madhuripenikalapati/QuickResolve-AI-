@@ -1,6 +1,7 @@
 from __future__ import annotations
 """Evaluation suite runner."""
 
+import asyncio
 import json
 from pathlib import Path
 from agent.graph import agent
@@ -121,5 +122,8 @@ async def run_eval_suite(test_case_ids: list[str] | None = None) -> dict:
         results["by_workflow"][workflow][tc_score] += 1
 
         results["details"].append(detail)
+
+        # Pace requests to avoid exhausting free-tier TPM across 34 back-to-back test cases
+        await asyncio.sleep(3)
 
     return results
