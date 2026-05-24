@@ -297,13 +297,15 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 | post_order | 10/11 | 1 | 0 |
 | general | 2/2 | 0 | 0 |
 
-**Remaining 2 partials**: Post-order refund edge cases where the LLM miscalculates date eligibility (ORD-1004 delivered 2025-05-08 — LLM doesn't have today's date and treats it as recent). Fix: inject `datetime.date.today()` into the response prompt at call time. Not done because it requires a prompt template change that risks breaking other response patterns.
+**Remaining 2 partials**:
+- `postorder_edge_01`: Refund request on ORD-1004 (delivered 8 days ago — outside the 7-day window). LLM says "eligible" because it doesn't know today's date. Fix: inject `datetime.date.today()` into the response prompt.
+- `preorder_adversarial_01`: "What is your gift wrapping policy?" — RAG returned exchange policy content instead of saying the policy doesn't exist. Fix: add a policy-not-found check before returning RAG results.
 
 ### Before/After: Key Eval Improvements
 
 | Fix | Before | After |
 |-----|--------|-------|
-| Classifier: policy before order_support | pre_order 40% pass | pre_order 100% pass |
+| Classifier: policy before order_support | pre_order 40% pass | pre_order routing fixed; current 80% (1 partial from gift-wrapping RAG gap) |
 | Response: no fake order IDs | order_adversarial partial | order_adversarial pass |
 | Scorer: errored tools count as grounded | 82% no-hallucination | 94% no-hallucination |
 | Classifier: pincode → place_order | address classified as `general` | correctly routed |

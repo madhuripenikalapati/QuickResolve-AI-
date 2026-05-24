@@ -71,12 +71,12 @@ I wrote a custom eval suite because existing frameworks (Ragas, DeepEval) measur
 **Current scores:** 94% task completion (32/34) · 94% no hallucination (32/34) · 100% tool validity (34/34) · 89% graceful failure (16/18)
 
 **What the eval caught that I would have missed:**
-- "Return policy" being routed to `order_support` because the word "return" triggered the wrong rule
-- The LLM writing "ORD-XXXX" literally (copied from a prompt example) when an order failed
-- Hallucination false positives: ₹5,000 (COD limit from `get_policy`) being flagged as a price hallucination
-- Gift wrapping policy question being answered with exchange policy because the RAG returned the wrong doc
+- "Return policy" being routed to `order_support` because the word "return" triggered the wrong rule — **fixed**
+- The LLM writing "ORD-XXXX" literally (copied from a prompt example) when an order failed — **fixed**
+- Hallucination false positives: ₹5,000 (COD limit from `get_policy`) being flagged as a price hallucination — **fixed** (scorer updated)
+- Gift wrapping policy question being answered with exchange policy because the RAG returned the wrong doc — **still a partial** (RAG returns closest match even when no policy exists; fix is a policy-not-found check before returning results)
 
-Each of these was caught by the eval, fixed, and verified by re-running. Without the eval, I'd have shipped all four.
+Three were fixed and verified by re-running. The fourth is the remaining `preorder_adversarial_01` partial in the eval results. Without the eval, I'd have shipped all four without knowing.
 
 ---
 
