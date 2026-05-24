@@ -95,6 +95,14 @@ def _fast_classify(message: str, session: dict):
         if any(kw in msg_lower_full for kw in ("cod", "cash", "upi", "gpay", "card", "credit", "debit")):
             return "place_order"
 
+    # Name reply when agent asked for it — route back to ordering flow
+    if active_product and len(msg.split()) <= 4 and re.match(r'^[a-zA-Z\s]+$', msg):
+        _recent = session.get("recent_messages", [])
+        if _recent:
+            _last_agent = _recent[-1].get("agent", "").lower()
+            if "your name" in _last_agent:
+                return "place_order"
+
     # Size mentioned in a short message while products are in context
     if _SIZE_IN_MSG.search(msg) and (last_shown or active_product) and len(msg.split()) <= 6:
         return "product_search"

@@ -5,10 +5,10 @@
     "subcategory": "silk_kurta",
     "price": 1899,
     "sizes": {
-      "S": 3,
-      "M": 0,
-      "L": 5,
-      "XL": 2
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Blue",
@@ -33,10 +33,10 @@
     "subcategory": "cotton_kurta",
     "price": 849,
     "sizes": {
-      "S": 5,
-      "M": 8,
-      "L": 6,
-      "XL": 3
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Ivory",
@@ -61,10 +61,10 @@
     "subcategory": "chanderi_kurta",
     "price": 2299,
     "sizes": {
-      "S": 2,
-      "M": 4,
-      "L": 0,
-      "XL": 1
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Rose Pink",
@@ -89,10 +89,10 @@
     "subcategory": "georgette_kurta",
     "price": 1599,
     "sizes": {
-      "S": 0,
-      "M": 3,
-      "L": 4,
-      "XL": 2
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Mint Green",
@@ -117,10 +117,10 @@
     "subcategory": "cotton_kurta",
     "price": 999,
     "sizes": {
-      "S": 6,
-      "M": 7,
-      "L": 5,
-      "XL": 4
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Yellow",
@@ -145,10 +145,10 @@
     "subcategory": "silk_kurta",
     "price": 2799,
     "sizes": {
-      "S": 1,
-      "M": 2,
-      "L": 3,
-      "XL": 0
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Maroon",
@@ -173,10 +173,10 @@
     "subcategory": "cotton_kurta",
     "price": 799,
     "sizes": {
-      "S": 4,
-      "M": 6,
-      "L": 5,
-      "XL": 3
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Navy Blue",
@@ -201,10 +201,10 @@
     "subcategory": "anarkali_set",
     "price": 3299,
     "sizes": {
-      "S": 2,
-      "M": 1,
-      "L": 3,
-      "XL": 2
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Red",
@@ -229,10 +229,10 @@
     "subcategory": "anarkali_set",
     "price": 4299,
     "sizes": {
-      "S": 1,
-      "M": 2,
-      "L": 0,
-      "XL": 1
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Teal",
@@ -257,10 +257,10 @@
     "subcategory": "anarkali_set",
     "price": 3899,
     "sizes": {
-      "S": 3,
-      "M": 2,
-      "L": 1,
-      "XL": 0
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Peach",
@@ -285,10 +285,10 @@
     "subcategory": "anarkali_set",
     "price": 2499,
     "sizes": {
-      "S": 4,
-      "M": 3,
-      "L": 2,
-      "XL": 1
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Purple",
@@ -313,10 +313,10 @@
     "subcategory": "georgette_kurta",
     "price": 2499,
     "sizes": {
-      "S": 2,
-      "M": 3,
-      "L": 1,
-      "XL": 4
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Gold",
@@ -341,10 +341,10 @@
     "subcategory": "chanderi_kurta",
     "price": 1999,
     "sizes": {
-      "S": 3,
-      "M": 4,
-      "L": 2,
-      "XL": 0
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Black"
@@ -368,10 +368,10 @@
     "subcategory": "cotton_kurta",
     "price": 1199,
     "sizes": {
-      "S": 5,
-      "M": 5,
-      "L": 4,
-      "XL": 2
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Orange",
@@ -396,7 +396,7 @@
     "subcategory": "chanderi_dupatta",
     "price": 899,
     "sizes": {
-      "Free Size": 12
+      "Free Size": 50
     },
     "colors": [
       "Pink",
@@ -421,7 +421,7 @@
     "subcategory": "silk_dupatta",
     "price": 1299,
     "sizes": {
-      "Free Size": 8
+      "Free Size": 50
     },
     "colors": [
       "Ivory",
@@ -445,7 +445,7 @@
     "subcategory": "georgette_dupatta",
     "price": 699,
     "sizes": {
-      "Free Size": 15
+      "Free Size": 50
     },
     "colors": [
       "Navy Blue",
@@ -470,7 +470,7 @@
     "subcategory": "chiffon_saree",
     "price": 3499,
     "sizes": {
-      "Free Size": 5
+      "Free Size": 50
     },
     "colors": [
       "Black"
@@ -494,7 +494,7 @@
     "subcategory": "cotton_saree",
     "price": 1299,
     "sizes": {
-      "Free Size": 10
+      "Free Size": 50
     },
     "colors": [
       "Beige",
@@ -519,7 +519,7 @@
     "subcategory": "silk_saree",
     "price": 5999,
     "sizes": {
-      "Free Size": 3
+      "Free Size": 50
     },
     "colors": [
       "Red",
@@ -543,7 +543,7 @@
     "subcategory": "chiffon_saree",
     "price": 1999,
     "sizes": {
-      "Free Size": 7
+      "Free Size": 50
     },
     "colors": [
       "Blue",
@@ -568,7 +568,7 @@
     "subcategory": "banarasi_saree",
     "price": 6999,
     "sizes": {
-      "Free Size": 4
+      "Free Size": 50
     },
     "colors": [
       "Gold",
@@ -592,7 +592,7 @@
     "subcategory": "cotton_saree",
     "price": 1499,
     "sizes": {
-      "Free Size": 6
+      "Free Size": 50
     },
     "colors": [
       "Green",
@@ -617,7 +617,7 @@
     "subcategory": "chiffon_saree",
     "price": 2799,
     "sizes": {
-      "Free Size": 5
+      "Free Size": 50
     },
     "colors": [
       "Purple",
@@ -642,7 +642,7 @@
     "subcategory": "silk_saree",
     "price": 4999,
     "sizes": {
-      "Free Size": 3
+      "Free Size": 50
     },
     "colors": [
       "Yellow",
@@ -666,7 +666,7 @@
     "subcategory": "georgette_saree",
     "price": 2499,
     "sizes": {
-      "Free Size": 6
+      "Free Size": 50
     },
     "colors": [
       "Pink",
@@ -691,10 +691,10 @@
     "subcategory": "bridal_lehenga",
     "price": 9999,
     "sizes": {
-      "S": 2,
-      "M": 1,
-      "L": 2,
-      "XL": 0
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Maroon",
@@ -718,10 +718,10 @@
     "subcategory": "festive_lehenga",
     "price": 7499,
     "sizes": {
-      "S": 1,
-      "M": 2,
-      "L": 1,
-      "XL": 0
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Gold",
@@ -746,10 +746,10 @@
     "subcategory": "festive_lehenga",
     "price": 5999,
     "sizes": {
-      "S": 2,
-      "M": 1,
-      "L": 0,
-      "XL": 1
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Pink",
@@ -774,10 +774,10 @@
     "subcategory": "custom_lehenga",
     "price": 8999,
     "sizes": {
-      "S": 0,
-      "M": 0,
-      "L": 0,
-      "XL": 0
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Red",
@@ -803,10 +803,10 @@
     "subcategory": "bridal_lehenga",
     "price": 12999,
     "sizes": {
-      "S": 1,
-      "M": 1,
-      "L": 0,
-      "XL": 0
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Royal Blue",
@@ -830,10 +830,10 @@
     "subcategory": "cotton_palazzo",
     "price": 1799,
     "sizes": {
-      "S": 4,
-      "M": 5,
-      "L": 3,
-      "XL": 2
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Teal",
@@ -858,10 +858,10 @@
     "subcategory": "rayon_palazzo",
     "price": 1499,
     "sizes": {
-      "S": 6,
-      "M": 7,
-      "L": 5,
-      "XL": 3
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Multicolor",
@@ -886,10 +886,10 @@
     "subcategory": "crepe_palazzo",
     "price": 2199,
     "sizes": {
-      "S": 3,
-      "M": 4,
-      "L": 3,
-      "XL": 1
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Black"
@@ -913,10 +913,10 @@
     "subcategory": "georgette_palazzo",
     "price": 2799,
     "sizes": {
-      "S": 2,
-      "M": 3,
-      "L": 4,
-      "XL": 2
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Lavender",
@@ -941,7 +941,7 @@
     "subcategory": "cotton_dupatta",
     "price": 499,
     "sizes": {
-      "Free Size": 20
+      "Free Size": 50
     },
     "colors": [
       "Mustard",
@@ -965,7 +965,7 @@
     "subcategory": "silk_dupatta",
     "price": 1499,
     "sizes": {
-      "Free Size": 9
+      "Free Size": 50
     },
     "colors": [
       "Red",
@@ -989,7 +989,7 @@
     "subcategory": "bandhani_dupatta",
     "price": 799,
     "sizes": {
-      "Free Size": 11
+      "Free Size": 50
     },
     "colors": [
       "Teal",
@@ -1014,7 +1014,7 @@
     "subcategory": "kashmiri_shawl",
     "price": 1799,
     "sizes": {
-      "Free Size": 6
+      "Free Size": 50
     },
     "colors": [
       "Beige",
@@ -1039,7 +1039,7 @@
     "subcategory": "pashmina_shawl",
     "price": 1999,
     "sizes": {
-      "Free Size": 5
+      "Free Size": 50
     },
     "colors": [
       "Ivory",
@@ -1064,7 +1064,7 @@
     "subcategory": "silk_stole",
     "price": 799,
     "sizes": {
-      "Free Size": 14
+      "Free Size": 50
     },
     "colors": [
       "Multicolor",
@@ -1090,10 +1090,10 @@
     "subcategory": "embroidered_blouse",
     "price": 799,
     "sizes": {
-      "S": 3,
-      "M": 4,
-      "L": 3,
-      "XL": 2
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Red",
@@ -1117,10 +1117,10 @@
     "subcategory": "custom_blouse",
     "price": 899,
     "sizes": {
-      "S": 0,
-      "M": 0,
-      "L": 0,
-      "XL": 0
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "All Colors Available"
@@ -1143,10 +1143,10 @@
     "subcategory": "cotton_kurta",
     "price": 1099,
     "sizes": {
-      "S": 4,
-      "M": 6,
-      "L": 5,
-      "XL": 3
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Peach",
@@ -1171,10 +1171,10 @@
     "subcategory": "silk_kurta",
     "price": 3999,
     "sizes": {
-      "S": 1,
-      "M": 2,
-      "L": 1,
-      "XL": 0
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Emerald Green",
@@ -1199,10 +1199,10 @@
     "subcategory": "cotton_kurta",
     "price": 1349,
     "sizes": {
-      "S": 5,
-      "M": 5,
-      "L": 4,
-      "XL": 2
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "Indigo",
@@ -1227,10 +1227,10 @@
     "subcategory": "anarkali_set",
     "price": 5999,
     "sizes": {
-      "S": 1,
-      "M": 1,
-      "L": 1,
-      "XL": 0
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "White",
@@ -1255,7 +1255,7 @@
     "subcategory": "chiffon_dupatta",
     "price": 599,
     "sizes": {
-      "Free Size": 18
+      "Free Size": 50
     },
     "colors": [
       "Lavender",
@@ -1280,7 +1280,7 @@
     "subcategory": "georgette_stole",
     "price": 599,
     "sizes": {
-      "Free Size": 16
+      "Free Size": 50
     },
     "colors": [
       "Mauve",
@@ -1305,10 +1305,10 @@
     "subcategory": "custom_anarkali",
     "price": 4999,
     "sizes": {
-      "S": 0,
-      "M": 0,
-      "L": 0,
-      "XL": 0
+      "S": 50,
+      "M": 50,
+      "L": 50,
+      "XL": 50
     },
     "colors": [
       "All Colors Available"

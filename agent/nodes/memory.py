@@ -73,6 +73,14 @@ def update_memory(state: AgentState) -> dict:
         if address:
             session.delivery_address = address
 
+        # Capture buyer name when agent asked for it in the previous turn
+        if not session.buyer_name:
+            _prev = session.recent_messages[-1] if session.recent_messages else {}
+            if "your name" in _prev.get("agent", "").lower():
+                candidate = last_user_msg.strip()
+                if candidate and len(candidate.split()) <= 4 and re.match(r'^[A-Za-z\s]+$', candidate):
+                    session.buyer_name = candidate
+
         # Pin active_product if user names/colors/ordinal-references a product from last_shown_products
         if not session.active_product and session.last_shown_products:
             msg_lower = last_user_msg.lower()
