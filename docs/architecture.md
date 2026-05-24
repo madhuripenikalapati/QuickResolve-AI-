@@ -64,7 +64,7 @@ Buyer Message
 │  ┌─────────────┐    ┌──────────────┐                │
 │  │  Session    │    │  LangGraph   │                │
 │  │  Store      │◄──►│  Agent       │                │
-│  │  (in-mem)   │    │  (7 nodes)   │                │
+│  │  (in-mem)   │    │  (8 nodes)   │                │
 │  └─────────────┘    └──────┬───────┘                │
 │                            │                         │
 │              ┌─────────────┼─────────────┐           │
@@ -150,7 +150,7 @@ search_catalog(query?, category?, max_price?, size?, color?, top_k?)
 
 Product embeddings are built from: `"{name}. {category}. {fabric}. {occasions}. {description}"`. All size keys normalized to uppercase at load time to prevent case mismatch.
 
-`check_availability` and `use_session_data` are thin wrappers over the same catalog — no separate tool needed.
+`check_availability` is a focused function in the same catalog module. `use_session_data` is a virtual tool handled in `execute_tool` — it reads from the session's `last_shown_products` instead of hitting the catalog again, so a repeat search isn't needed when the buyer is still asking about products already on screen.
 
 ### Tool 2 — Orders (`tools/orders.py`)
 
@@ -292,9 +292,9 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 | Workflow | Pass | Partial | Fail |
 |----------|------|---------|------|
 | discovery | 11/11 | 0 | 0 |
-| pre_order | 5/5 | 0 | 0 |
+| pre_order | 4/5 | 1 | 0 |
 | ordering | 5/5 | 0 | 0 |
-| post_order | 9/11 | 2 | 0 |
+| post_order | 10/11 | 1 | 0 |
 | general | 2/2 | 0 | 0 |
 
 **Remaining 2 partials**: Post-order refund edge cases where the LLM miscalculates date eligibility (ORD-1004 delivered 2025-05-08 — LLM doesn't have today's date and treats it as recent). Fix: inject `datetime.date.today()` into the response prompt at call time. Not done because it requires a prompt template change that risks breaking other response patterns.
@@ -402,7 +402,7 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 
 ### 6. Fuzzy matching at scale
 
-**What breaks**: `difflib.get_close_matches` with cutoff=0.80 works for 15 colors and 12 categories. At 200+ colors, false positives increase — "teal" matching "teel" (sesame seed, a valid product tag in a larger catalog).
+**What breaks**: `difflib.get_close_matches` with cutoff=0.80 works for the current 44 colors and 8 categories. At 200+ colors, false positives increase — "teal" matching "teel" (sesame seed, a valid product tag in a larger catalog).
 
 **Full fix**: Replace difflib with a small embedding nearest-neighbor lookup for entity resolution. The FAISS infrastructure is already present.
 
