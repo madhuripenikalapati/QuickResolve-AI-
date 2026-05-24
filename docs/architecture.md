@@ -242,10 +242,10 @@ LangGraph provides explicit control over the node execution graph. For a reliabi
 
 | Factor | Choice | Reasoning |
 |--------|--------|-----------|
-| Speed | Groq LPU hardware | ~10× faster inference than OpenAI for same model size. Critical for WhatsApp-style streaming where latency feels like the human is slow. |
+| Speed | Groq LPU hardware | Significantly faster inference than GPU-hosted APIs for the same model. Groq's LPU architecture is purpose-built for sequential token generation. Critical for WhatsApp-style streaming where latency feels like the human is slow. |
 | Cost | Free tier (demo) | 4 API keys × 6,000 TPM = 24,000 TPM. Sufficient for eval and demo. |
 | Model size | Llama 3.1 8B | The tasks are structured (classify into 6 intents, generate grounded response from tool output). 8B is fast and sufficient — 70B would be slower with no reliability benefit given the prompt constraints. |
-| Fallback | Rule-based fallback | When all keys exhaust, `_rule_based_fallback()` generates a response from tool result shapes without any LLM call. Covers 8 common result shapes. |
+| Fallback | Rule-based fallback | When all keys exhaust, `_rule_based_fallback()` generates a response from tool result shapes without any LLM call. Covers the most common patterns: catalog results, order status, create_order success/failure, policy content, and clarification prompts. |
 
 **Key rotation**: 4 API keys are rotated on `RateLimitError`. When all 4 are exhausted, the system sleeps 5 seconds and retries. This adds ~5-30s latency under heavy load but prevents hard failures.
 
@@ -396,7 +396,7 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 
 **What breaks**: When all Groq keys are exhausted, `_rule_based_fallback()` handles 8 tool result shapes. Novel combinations (policy result + order result in same turn) return "I'm having trouble fetching that right now."
 
-**Full fix**: Expand the fallback to cover combined tool result shapes, or run a local Ollama model for the response generation node as a second-tier fallback.
+**Full fix**: Expand the fallback to cover combined tool result shapes (e.g. policy + order in same turn), or run a local Ollama instance as a second-tier fallback for the response generation node.
 
 ---
 
