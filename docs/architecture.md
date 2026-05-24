@@ -183,6 +183,7 @@ The agent never applies business rules itself — the tool does. If the tool rej
 
 | Field | Type | Purpose |
 |-------|------|---------|
+| `buyer_name` | string | Buyer's name — captured once when agent asks, used in order creation |
 | `stage` | string | Current stage: `discovery → pre_order → ordering → post_order` |
 | `active_product` | dict | Currently selected product — avoids re-searching every turn |
 | `active_order_id` | string | Order context for support turns |
