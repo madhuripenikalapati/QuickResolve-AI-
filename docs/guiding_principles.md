@@ -16,7 +16,14 @@ When I saw PS-3, I immediately recognised this problem. I built a minimal versio
 
 The biggest decision was where to put intelligence. I chose deterministic Python for all routing and a fast-path rule engine (`_fast_classify`) that handles ~70% of messages without touching the LLM. The LLM is called at most twice per turn — once for classification (only when rules can't decide) and once for response generation.
 
-Why? Because LLM classifiers are fast to write and slow to trust. Rules fail loudly and consistently. When a buyer sends "XL" after seeing a saree, I don't want an LLM guessing if that's a size request or a new search. I want a pattern match that always routes to `product_search`. Every routing decision I committed to code is a failure mode I've closed off permanently.
+Why rule-based over LLM for routing? Four concrete reasons:
+
+- **Determinism**: the same message always gets the same intent. LLMs at temperature=0 are mostly consistent but not guaranteed — especially on short, ambiguous messages like "ok" or "XL".
+- **Debuggability**: when a rule fails, you see exactly which pattern didn't match and fix it in one line. When an LLM classifier misfires, you don't know why — different tokenization? context bleeding? you can't tell without logging every prompt.
+- **Latency**: rule-based fast-classify is 0ms. An LLM classify call adds 500–1,500ms per turn. For ~70% of messages that are unambiguous (a size token, a 6-digit pincode, an order ID), that's wasted time.
+- **Cost**: every LLM call burns tokens. At 1,000 messages/day, skipping the classifier call for clear-cut cases cuts token usage by roughly half.
+
+The LLM is still used for genuinely ambiguous messages — multi-intent queries, sarcasm, mixed-language requests where rules can't decide. That's the right tradeoff: deterministic code for the easy 70%, LLM for the hard 30%.
 
 The three tools were chosen by collapsing what could be six or seven tools into three. `search_catalog` handles both product browsing and availability checks. `get_policy` handles all four policy types via RAG. Fewer tools = fewer wrong selections. This is the core of "minimal agent, maximum reliability."
 
