@@ -209,7 +209,7 @@ The core tension in agent design is **autonomy vs. predictability**. More LLM de
 |----------------|----------------|-------------------|-----|
 | Intent classification | Rule-based fast-path first, LLM only for ambiguous cases | Pure LLM classifier | Rules fail loudly and consistently. LLM classifiers hallucinate novel intents under distribution shift. |
 | Tool selection | Deterministic rules in `select_tool` node | ReAct-style LLM tool selection | LLM tool selection errors compound — wrong tool → wrong result → wrong response. Rules make tool selection auditable. |
-| Context validation | Explicit field checklist in `check_context` | Trusting LLM to notice missing info | LLMs skip asking for information they can plausibly infer. Always wrong in production. |
+| Context validation | Explicit field checklist in `check_context` | Trusting LLM to notice missing info | LLMs skip asking for information they can plausibly infer. Unreliable in production — you get inconsistent behaviour depending on how confident the model feels about the inference. |
 | Response grounding | Strict prompt rules + session context stripped before injection | Passing full session to LLM | Full session caused LLM to blend old product data into new search results. |
 | Graph routing | Conditional edges with Python code | LLM-decided next steps | Routing bugs are the hardest to debug. Code is always preferable to prompts for control flow. |
 | Language detection | Character-level heuristic + recent message inheritance | fastText language model | 917KB model adds deployment complexity. Heuristic handles 90% of cases. |
@@ -283,9 +283,9 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 | Metric | Score |
 |--------|-------|
 | Task Completion | **32/34 — 94%** |
-| No Tool Hallucination | **34/34 — 100%** |
+| No Tool Hallucination | **32/34 — 94%** |
 | Tool Validity | **34/34 — 100%** |
-| Graceful Failure Handling | **17/18 — 94%** |
+| Graceful Failure Handling | **16/18 — 89%** |
 
 **By workflow:**
 
@@ -305,7 +305,7 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 |-----|--------|-------|
 | Classifier: policy before order_support | pre_order 40% pass | pre_order 100% pass |
 | Response: no fake order IDs | order_adversarial partial | order_adversarial pass |
-| Scorer: errored tools count as grounded | 82% no-hallucination | 100% no-hallucination |
+| Scorer: errored tools count as grounded | 82% no-hallucination | 94% no-hallucination |
 | Classifier: pincode → place_order | address classified as `general` | correctly routed |
 | Context: size validation across products | XXL bleeds to FREE SIZE saree | size validated per product |
 
@@ -335,7 +335,7 @@ Happy path = standard buyer journey. Edge case = boundary conditions (out of sto
 | Groq free tier | ~100 concurrent users | 6,000 TPM per key × 4 keys = 24,000 TPM. 100k users/day at ~2,000 tokens/turn needs ~140,000 TPM. |
 | In-memory sessions | Server restart | Every deployment wipes all active sessions. Users lose mid-conversation context. |
 | In-memory orders | Server restart | All order data lost. Also doesn't scale across multiple server instances. |
-| FAISS index | ~500k products | Loaded into RAM at startup. Fine for 60-product demo catalog, not for a real boutique. |
+| FAISS index | ~500k products | Loaded into RAM at startup. Fine for 50-product demo catalog, not for a real boutique. |
 | Single FastAPI instance | ~500 concurrent connections | No load balancing, no horizontal scaling. |
 
 ### What to monitor (Day 1 of production)

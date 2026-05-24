@@ -21,7 +21,7 @@ Why rule-based over LLM for routing? Four concrete reasons:
 - **Determinism**: the same message always gets the same intent. LLMs at temperature=0 are mostly consistent but not guaranteed — especially on short, ambiguous messages like "ok" or "XL".
 - **Debuggability**: when a rule fails, you see exactly which pattern didn't match and fix it in one line. When an LLM classifier misfires, you don't know why — different tokenization? context bleeding? you can't tell without logging every prompt.
 - **Latency**: rule-based fast-classify is 0ms. An LLM classify call adds 500–1,500ms per turn. For ~70% of messages that are unambiguous (a size token, a 6-digit pincode, an order ID), that's wasted time.
-- **Cost**: every LLM call burns tokens. At 1,000 messages/day, skipping the classifier call for clear-cut cases cuts token usage by roughly half.
+- **Cost**: every LLM call burns tokens. At 1,000 messages/day, skipping the classifier LLM for ~70% of messages reduces total token usage by roughly 30–35% (response generation still runs for every message).
 
 The LLM is still used for genuinely ambiguous messages — multi-intent queries, sarcasm, mixed-language requests where rules can't decide. That's the right tradeoff: deterministic code for the easy 70%, LLM for the hard 30%.
 
@@ -47,7 +47,7 @@ The three tools were chosen by collapsing what could be six or seven tools into 
 - `tool_errors` rate by tool type — `create_order` failures tell you if stock data is stale
 - `escalated` rate — rising escalation = agent hitting its boundary
 - `intent=unclear` rate — rising unclear = new message patterns the classifier hasn't seen
-- `tool_hallucination` rate — any non-zero value in production needs immediate investigation
+- `tool_hallucination` rate — eval shows 2 failing cases (6%) around order error edge cases. In production, any hallucination on price or policy needs immediate investigation — these directly break buyer trust
 
 **What I'd fix first:**
 
@@ -68,7 +68,7 @@ I wrote a custom eval suite because existing frameworks (Ragas, DeepEval) measur
 | Tool Validity | Were the right tools called? Were there duplicate calls? | Wrong tool = wrong answer, even if the LLM sounds confident |
 | Graceful Failure | When something went wrong, did the agent handle it without crashing or exposing errors? | Edge cases happen in production. Crashing is worse than saying "I'm not sure." |
 
-**Current scores:** 94% task completion · 94% no hallucination · 100% tool validity · 89% graceful failure
+**Current scores:** 94% task completion (32/34) · 94% no hallucination (32/34) · 100% tool validity (34/34) · 89% graceful failure (16/18)
 
 **What the eval caught that I would have missed:**
 - "Return policy" being routed to `order_support` because the word "return" triggered the wrong rule
@@ -90,7 +90,7 @@ Each of these was caught by the eval, fixed, and verified by re-running. Without
 | Streaming LLM responses | FastAPI + SSE is straightforward but adds latency complexity to the eval. Skipped to keep the eval deterministic. |
 | Langfuse / distributed tracing | Structured JSON logs are in place. A trace store is the next step, not the first. |
 | Multi-seller support | One seller (my mom's boutique) is the target. Multi-tenancy is a future architectural change, not something to build speculatively. |
-| Voice messages | ~30% of WhatsApp messages in India are voice. Whisper transcription is the fix. Not built because the text agent needed to be solid first. |
+| Voice messages | A significant portion of WhatsApp messages in India are voice notes. Whisper transcription is the fix. Not built because the text agent needed to be solid first. |
 | Automated comment replies | Post/reel comment automation is on the roadmap but requires Instagram Graph API integration first. |
 
 The rule: if it doesn't make the agent more reliable for the core 4 workflows (search, order, policy, post-order), it didn't get built.

@@ -137,7 +137,7 @@ Every turn logs a structured JSON record to stdout:
   "session_id": "session-1234567890",
   "event": "turn_complete",
   "intent": "product_search",
-  "confidence": 0.92,
+  "confidence": 1.0,
   "tools": ["search_catalog"],
   "tool_errors": [],
   "escalated": false,
@@ -168,8 +168,7 @@ QuickResolve-AI-/
 **Scoped out:**
 - **Persistent storage** – sessions and orders are in-memory dicts. Redis + PostgreSQL for production.
 - **Auth/rate limiting** – no per-user limits on `/api/chat`. Needed before any public deployment.
-- **Streaming responses** – LLM responses are buffered. FastAPI + SSE would fix latency feel.
-- **Multi-language NLU** – Hindi/Hinglish detection is present but classification still runs in English.
+- **Multi-language NLU** – Hindi/Hinglish classification is present but native Telugu intent classification is not. Short replies ("ok", "haan") default to English.
 - **Langfuse / tracing** – structured JSON logs are in place; a proper trace store would be next.
 
 **Key design decision:** Rule-based `fast_classify` for bare size tokens and order IDs skips the LLM entirely — 0ms classify for the most common follow-up patterns. LLM only fires when the intent is genuinely ambiguous.
