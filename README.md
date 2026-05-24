@@ -46,22 +46,26 @@ python3 -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
-# 2. Add your Groq key
+# 2. Copy .env — pre-obtained keys are already included, ready to run
 cp .env.example .env
-# Open .env and replace gsk_your-groq-key-here with your actual key
 
 # 3. Frontend
 cd frontend && npm install && cd ..
 ```
 
-### .env (only one thing you must change)
+### .env — no changes needed to run
+
+`.env.example` ships with 5 pre-obtained Groq keys (free tier, no credit card). Copy it and run:
 
 ```
-GROQ_API_KEY=gsk_your-actual-key-here   ← replace this
+GROQ_API_KEY=gsk_...            ← pre-filled, works immediately
+GROQ_API_KEYS=gsk_...,gsk_...  ← 4 extra keys for round-robin rotation
 GROQ_MODEL=llama-3.1-8b-instant
 GROQ_CLASSIFY_MODEL=llama-3.1-8b-instant
 LLM_PROVIDER=groq
 ```
+
+**More keys = faster throughput.** Each free Groq key gives 6,000 TPM. 5 keys = 30,000 TPM effective capacity. The system rotates keys round-robin after every call — not just on failure — so load spreads evenly. To add your own: get a free key at [console.groq.com](https://console.groq.com) and append it to `GROQ_API_KEYS`.
 
 ### Run
 

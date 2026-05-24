@@ -247,7 +247,7 @@ LangGraph provides explicit control over the node execution graph. For a reliabi
 | Model size | Llama 3.1 8B | The tasks are structured (classify into 6 intents, generate grounded response from tool output). 8B is fast and sufficient — 70B would be slower with no reliability benefit given the prompt constraints. |
 | Fallback | Rule-based fallback | When all keys exhaust, `_rule_based_fallback()` generates a response from tool result shapes without any LLM call. Covers the most common patterns: catalog results, order status, create_order success/failure, policy content, and clarification prompts. |
 
-**Key rotation**: 4 API keys are rotated on `RateLimitError`. When all 4 are exhausted, the system sleeps 5 seconds and retries. This adds ~5-30s latency under heavy load but prevents hard failures.
+**Key rotation**: 5 API keys (1 primary + 4 in `GROQ_API_KEYS`) are rotated round-robin after every successful call — `_key_index` increments on success, not just on failure. This spreads load evenly across all keys so no single key gets saturated. When all keys hit rate limits simultaneously, the system sleeps 5 seconds and retries. The `.env.example` ships with 5 pre-obtained free keys so evaluators can run without signing up.
 
 ---
 
