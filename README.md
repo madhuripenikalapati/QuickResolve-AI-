@@ -67,6 +67,7 @@ LLM_PROVIDER=groq
 
 ```bash
 # Terminal 1: Backend
+source venv/bin/activate          # Windows: venv\Scripts\activate
 python3 run.py
 ```
 
