@@ -2,7 +2,11 @@
 
 > Meraki Labs Work Trial | PS3: Minimal Agent, Maximum Reliability
 
-AI-powered D2C customer support agent with hybrid search, policy RAG, and order management. Built with LangGraph + Groq (Llama 3.1). Includes custom eval framework with 30+ automated test cases across 4 reliability metrics.
+My mom runs a women's clothing boutique on Instagram. She gets ~1,000 messages a day on WhatsApp and Instagram DMs — buyers asking prices, placing orders, checking stock. My sisters reply manually. If they reply fast, the buyer converts. If they're late, the sale is gone.
+
+I built this to fix that.
+
+---
 
 ## Demo: Taara Boutique
 

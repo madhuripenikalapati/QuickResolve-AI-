@@ -1,8 +1,48 @@
 # QuickResolve AI — Architecture Decision Document
 
+---
+
+## Why This Was Built
+
+My mom runs a women's clothing boutique on Instagram. She posts her entire collection there — sarees, kurtas, lehengas — and buyers reach out directly on WhatsApp Business and Instagram DMs to ask questions and place orders.
+
+She gets **~1,000 messages a day**. She has no team. My sisters help her reply.
+
+What we noticed: if you reply within minutes, the buyer converts. If you reply hours later, they've already bought from someone else. Conversion rate drops sharply with response time.
+
+Most messages come in **Telugu**, or a mix of Telugu and English. Buyers often send back an **Instagram post or reel** asking "how much is this?" or "is this available in XL?" There's no product catalog URL, no cart, no checkout — just DMs and trust.
+
+Every day my sisters spend hours doing this manually. They can't reply to everyone. They miss messages. Sellers like my mom — and thousands like her across India running Instagram-first boutiques — have no affordable automation solution built for how they actually sell.
+
+When I saw PS-3 ("Minimal Agent, Maximum Reliability"), I immediately thought of this. I built a minimal version of what I want this to eventually become.
+
+---
+
+## What This Version Does
+
 **Problem**: Taara Boutique is an Instagram fashion store. Buyers discover products on Instagram, then reach out via **WhatsApp Business** or **Instagram DMs** to ask questions, place orders, and raise issues. All of this is handled manually today. The goal is to automate the full buyer journey — product discovery → order placement → post-order support — reliably, without hallucinating product details, inventing policies, or placing wrong orders.
 
-**What was built**: A conversational agent with 3 tools, session memory, streaming responses, and a custom eval suite. Built in 2 days.
+**What was built**: A conversational agent with 3 tools, session memory, and a custom eval suite. Built in 2 days.
+
+---
+
+## What Comes Next (Next Few Days)
+
+This submission is a minimal slice. The real system I'm building:
+
+| Feature | Why It Matters |
+|---------|---------------|
+| **Instagram Graph API integration** | Receive and reply to DMs directly from Instagram — no separate chat UI |
+| **WhatsApp Business API integration** | Same agent, same logic, answering on WhatsApp |
+| **Instagram post/reel to product lookup** | Buyer sends a reel link → agent identifies the product, answers price/availability |
+| **Full Telugu + multilingual NLU** | Most buyers write in Telugu. Current system understands it but classifies in English. Fix: native Telugu intent classification. |
+| **Automated comment replies** | When buyers comment on a post ("price?" / "available?"), agent auto-replies instantly |
+| **WhatsApp broadcast messages** | Festival sale announcements, new collection drops, restock alerts — sent to opted-in buyers |
+| **Personalised follow-ups** | Birthday wishes, cart abandonment nudges, "you liked this, new stock arrived" — all automated |
+| **Persistent order + customer DB** | PostgreSQL. Today orders are in-memory and lost on restart. |
+| **Seller dashboard** | My mom can see all conversations, override any agent reply, and see which products are getting the most enquiries |
+
+The goal is a system that works exactly like my sisters do today — but instantly, at 3am, in Telugu, across 1,000 simultaneous conversations.
 
 ---
 
