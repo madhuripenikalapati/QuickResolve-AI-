@@ -1,6 +1,6 @@
 # QuickResolve AI — Architecture Decision Document
 
-**Problem**: Taara Boutique handles buyer conversations on WhatsApp and Instagram DMs. Buyers ask about products, place orders, and raise post-order issues. Today this is done manually. The goal is to automate the full buyer journey reliably — product discovery → order placement → post-order support — without hallucinating product details, inventing policies, or placing wrong orders.
+**Problem**: Taara Boutique is an Instagram fashion store. Buyers discover products on Instagram, then reach out via **WhatsApp Business** or **Instagram DMs** to ask questions, place orders, and raise issues. All of this is handled manually today. The goal is to automate the full buyer journey — product discovery → order placement → post-order support — reliably, without hallucinating product details, inventing policies, or placing wrong orders.
 
 **What was built**: A conversational agent with 3 tools, session memory, streaming responses, and a custom eval suite. Built in 2 days.
 
@@ -11,7 +11,8 @@
 ### System Overview
 
 ```
-Buyer Message (WhatsApp/Web)
+Buyer Message
+(WhatsApp Business / Instagram DM)
         │
         ▼
 ┌─────────────────────────────────────────────────────┐

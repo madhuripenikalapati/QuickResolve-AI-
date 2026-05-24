@@ -6,7 +6,7 @@ AI-powered D2C customer support agent with hybrid search, policy RAG, and order 
 
 ## Demo: Taara Boutique
 
-QuickResolve AI powers customer support for "Taara Boutique" – a fictional Jaipur-based fashion seller on Instagram. It handles the complete buyer journey:
+QuickResolve AI powers customer support for **Taara Boutique** — an Instagram fashion store that receives buyer messages on **WhatsApp Business** and **Instagram DMs**. Buyers discover products on Instagram, then message directly to ask questions, place orders, and resolve issues. The agent handles the complete buyer journey across both channels:
 
 - **Product Discovery** – hybrid search (structured filters + vector similarity) across 50 products with real product images
 - **Policy Q&A** – RAG over 4 policy documents (refund, exchange, COD, shipping)
