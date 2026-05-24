@@ -171,22 +171,26 @@ def _select_catalog_tool(message: str, session: dict) -> dict:
         "size cheppandi", "konni sizes",
         "what are the size", "available size", "size do you have", "sizes do you",
     ]
-    # Active product already selected + user picks a size → check that specific product's availability
-    # Skip if category is in args — "show me kurtas in XXL" is a catalog search, not an availability check
-    if product and detected_size and not args.get("category"):
+    # Browse intent words — "show me in XL" is a catalog search, not an availability check
+    _browse_intent = any(w in msg_lower for w in ("show", "browse", "find", "search", "looking", "want", "need", "anything", "dikhao"))
+
+    # Active product selected + user picks a size → check_availability on that product.
+    # Skip when: category present, OR browse intent ("show me in XL" = search all, not check one)
+    if product and detected_size and not args.get("category") and not _browse_intent:
         return {
             "tool_to_call": "check_availability",
             "tool_args": {"product_id": product.get("product_id"), "size": detected_size},
         }
 
-    if last_shown and (
+    # Size filter on last-shown products — only when NOT a browse request
+    if last_shown and not _browse_intent and (
         any(p in msg_lower for p in size_question_patterns)
         or (detected_size and not args.get("category"))
     ):
         return {"tool_to_call": "use_session_data", "tool_args": {"size": detected_size} if detected_size else {}}
 
     # Single product in session + size/availability query → check_availability
-    if product and (detected_size or any(kw in msg_lower for kw in ["available", "stock", "size"])):
+    if product and not _browse_intent and (detected_size or any(kw in msg_lower for kw in ["available", "stock", "size"])):
         if detected_size:
             return {
                 "tool_to_call": "check_availability",
@@ -227,8 +231,8 @@ def _select_catalog_tool(message: str, session: dict) -> dict:
     if not args:
         args["query"] = message
 
-    # Category-only browse (no color/price/size filter) → show all, no cap
-    if args.get("category") and not args.get("color") and not args.get("max_price") and not args.get("size"):
+    # Category-only or size-only browse → show all results, no tight cap
+    if (args.get("category") or args.get("size")) and not args.get("color") and not args.get("max_price"):
         args.setdefault("top_k", 50)
     else:
         args.setdefault("top_k", 5)
