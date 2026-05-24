@@ -148,7 +148,7 @@ search_catalog(query?, category?, max_price?, size?, color?, top_k?)
 
 **Why hybrid?** Structured filters handle "kurtas under ₹2000 in size L" with 100% precision — vector search would return semantically close but wrong-price items. Vector handles open-ended queries where filters give no results. Both paths share the same FAISS infrastructure used for policy RAG.
 
-Product embeddings are built from: `"{name}. {category}. {fabric}. {occasions}. {description}"`. All size keys normalized to uppercase at load time to prevent case mismatch.
+Product embeddings are built from: `"{name}. {category}. {fabric}. {occasion joined}. {description}"` — the `occasion` field is a list (e.g. `["festive", "wedding"]`), joined into a string before embedding. All size keys normalized to uppercase at load time to prevent case mismatch.
 
 `check_availability` is a focused function in the same catalog module. `use_session_data` is a virtual tool handled in `execute_tool` — it reads from the session's `last_shown_products` instead of hitting the catalog again, so a repeat search isn't needed when the buyer is still asking about products already on screen.
 
