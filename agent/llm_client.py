@@ -120,7 +120,9 @@ def chat_with_rotation(**kwargs) -> object:
         key = _keys[_key_index % num_keys]
         client = _make_client(key)
         try:
-            return client.chat.completions.create(**kwargs)
+            result = client.chat.completions.create(**kwargs)
+            _key_index += 1  # round-robin: rotate after every successful call
+            return result
         except RateLimitError as e:
             last_error = e
             logger.warning(f"Rate limit on key index {_key_index % num_keys}, rotating.")
@@ -153,7 +155,9 @@ def chat_stream_with_rotation(**kwargs):
         key = _keys[_key_index % num_keys]
         client = _make_client(key)
         try:
-            return client.chat.completions.create(stream=True, **kwargs)
+            stream = client.chat.completions.create(stream=True, **kwargs)
+            _key_index += 1  # round-robin: rotate after every successful call
+            return stream
         except RateLimitError as e:
             last_error = e
             logger.warning(f"Rate limit on key index {_key_index % num_keys}, rotating.")
