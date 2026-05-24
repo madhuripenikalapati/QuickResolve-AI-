@@ -110,9 +110,10 @@ def build_response_prompt(state: AgentState) -> dict:
             else:
                 tool_results_str += json.dumps(tc["result"], indent=2, default=str) + "\n"
 
-        # Strip last_shown_products from session context — tool_result IS the new product data.
-        # Passing the old list confuses the LLM into mixing old products into the new response.
-        session_for_prompt = {k: v for k, v in session.items() if k != "last_shown_products"}
+        # Strip last_shown_products AND recent_messages from session context.
+        # Both cause the LLM to pull product names from prior turns and invent availability claims.
+        session_for_prompt = {k: v for k, v in session.items()
+                              if k not in ("last_shown_products", "recent_messages")}
         prompt = RESPONSE_WITH_TOOL_RESULT.format(
             tool_results=tool_results_str,
             session_state=json.dumps(session_for_prompt, indent=2, default=str),
