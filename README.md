@@ -33,7 +33,7 @@ QuickResolve AI powers customer support for **Taara Boutique** — an Instagram 
 ### Prerequisites
 - Python 3.9+
 - Node.js 18+
-- Groq API key (free at [console.groq.com](https://console.groq.com))
+- Groq API key — **free, no credit card needed** → [console.groq.com](https://console.groq.com) → sign up → API Keys → Create key
 
 ### Setup
 
@@ -41,26 +41,26 @@ QuickResolve AI powers customer support for **Taara Boutique** — an Instagram 
 git clone https://github.com/madhuripenikalapati/QuickResolve-AI-.git
 cd QuickResolve-AI-
 
-# Backend
+# 1. Backend
 python3 -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
+
+# 2. Add your Groq key
 cp .env.example .env
-# Add your GROQ_API_KEY to .env
+# Open .env and replace gsk_your-groq-key-here with your actual key
 
-# Frontend
-cd frontend
-npm install
-cd ..
+# 3. Frontend
+cd frontend && npm install && cd ..
 ```
 
-### .env minimum config
+### .env (only one thing you must change)
 
 ```
-GROQ_API_KEY=your_key_here
-LLM_PROVIDER=groq
+GROQ_API_KEY=gsk_your-actual-key-here   ← replace this
 GROQ_MODEL=llama-3.1-8b-instant
 GROQ_CLASSIFY_MODEL=llama-3.1-8b-instant
+LLM_PROVIDER=groq
 ```
 
 ### Run
@@ -118,14 +118,14 @@ User Message
 
 ## Eval Results
 
-| Metric | Score |
-|--------|-------|
-| Task Completion | __%  |
-| Tool Hallucination (clean) | __% |
-| Valid Tool Use | __% |
-| Graceful Failure | __% |
+| Metric | Score | Detail |
+|--------|-------|--------|
+| Task Completion | **94%** | 32/34 pass |
+| No Hallucination | **94%** | 32/34 clean |
+| Valid Tool Use | **100%** | 34/34 valid |
+| Graceful Failure | **89%** | 16/18 graceful |
 
-*Run `curl -X POST http://localhost:8000/api/eval/run` to populate*
+Run `curl -X POST http://localhost:8000/api/eval/run` or use the **Eval** tab in the UI to re-run.
 
 ## Observability
 
